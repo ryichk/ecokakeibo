@@ -1,0 +1,52 @@
+
+  <table>
+    <caption>家計簿（料金）</caption>
+    <thead>
+      <tr>
+        <th class="month">年月</th>
+        <th>電気</th>
+        <th>ガス</th>
+        <th>水道</th>
+      </tr>
+    </thead>
+    <% @kakeibos.each do |kakeibo| %>
+      <% if logged_in? && current_user.id == kakeibo.user_id %>
+        <tbody>
+          <tr>
+            <td><%= kakeibo.month %>
+              <ul class="more_list">
+                <%= link_to '削除', "/kakeibos/#{kakeibo.id}", method: :delete %>
+              </ul>
+            </td>
+            <td><%= kakeibo.denki_cost.to_i %>円</td>
+            <td><%= kakeibo.gas_cost.to_i %>円</td>
+            <td><%= kakeibo.suidou_cost.to_i %>円</td>
+          </tr>
+        </tbody>
+      <% end %>
+    <% end %>
+  </table>
+  <table>
+    <caption>使用量</caption>
+    <thead>
+      <tr>
+        <th class="month">年月</th>
+        <th>電気</th>
+        <th>ガス</th>
+        <th>水道</th>
+      </tr>
+    </thead>
+    <% @kakeibos.each do |kakeibo| %>
+      <% if logged_in? && current_user.id == kakeibo.user_id %>
+    <tbody>
+      <tr>
+        <td><%= kakeibo.month %></td>
+        <td><%= kakeibo.denki.to_f %>kWh</td>
+        <td><%= kakeibo.gas.to_f %>m<sup>3</sup></td>
+        <td><%= kakeibo.suidou.to_f %>m<sup>3</sup></td>
+      </tr>
+    </tbody>
+      <% end %>
+    <% end %>
+  </table>
+  <%= paginate(@kakeibos) %>

@@ -1,0 +1,54 @@
+<div class="ribbon-wrap">
+  <h1 class="ribbon">ランキング＊<%= @setai.setai %>人世帯＊</h1>
+</div>
+<div class="contents">
+  <h2 class="text-small hr-bottom--thin">
+    <i class="icon-crown"></i>CO2排出量<%= image_tag 'co2.jpeg', :size => "80x80" %>
+  </h2>
+  <ul class="ranking">
+    <% @ranking1.each.with_index(1) do |user, i|  %>
+      <li>
+        <%= i %>位
+        <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+        <a href="/kakeibos/<%= user.id %>" class="rank">
+          <%= user.name %>
+        </a>
+        <img src="<%= user.avatar_file_name %>" alt="">
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div class="contents">
+  <h2 class="text-small hr-bottom--thin no-space-bottom">
+    <i class="icon-crown color-gray-light"></i><%= image_tag 'vw.jpeg', :size => "50x50" %> バーチャルウォーター量
+  </h2>
+  <ul class="ranking">
+    <% @ranking2.each.with_index(1) do |user, i|  %>
+      <li>
+        <%= i %>位
+        <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+        <a href="/kakeibos/<%= user.id %>" class="rank">
+          <%= user.name %>
+        </a>
+        <img src="<%= user.avatar_file_name %>" alt="">
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div class="contents">
+  <h2 class="text-small hr-bottom--thin no-space-bottom">
+    <i class="icon-crown color-gray-light"></i><%= image_tag 'fm2.png', :size => "70x70" %>フードマイレージCO2排出量 <%= image_tag 'fm1.jpeg', :size => "60x60" %>
+  </h2>
+  <ul class="ranking">
+    <% @ranking3.each.with_index(1) do |user, i|  %>
+      <li>
+        <%= i %>位
+        <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+        <a href="/kakeibos/<%= user.id %>" class="rank">
+          <%= user.name %>
+        </a>
+        <img src="<%= user.avatar_file_name %>" alt="">
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,198 @@
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="chosen.jquery.min.js"></script>
+<link href="chosen.min.css" rel="stylesheet">
+<div id="kakeibo">
+  <div id="input_consmonth">
+    <table class="input_consmonth1">
+      <div class="contents">
+        <ul id="result">
+        </ul>
+        <tr>
+          <th>
+            <%= image_tag 'yasai.png', :size => "100x100" %> 野菜のおかず
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, options_for_select(Cuisine.where("(genre = ?) OR (genre = ?)", '野菜のおかず', 'サラダ').select("id,name").map{|f| [f.name, f.id]}), {}, {:include_blank => true, :class => "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'you.png', :size => "100x100" %> 肉のおかず
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = '肉のおかず'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+             <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'wa.png', :size => "100x100" %> 魚介のおかず
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = '魚介のおかず'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'tamago.png', :size => "100x100" %> 卵・大豆製品
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = '卵・大豆製品'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'siru.png', :size => "100x100" %> 汁物
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = 'シチュー・スープ・汁物'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'gohan.png', :size => "100x100" %> ごはんもの
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = 'ごはんもの'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'itary.png', :size => "100x100" %> パスタ・グラタン
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = 'パスタ・グラタン'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'men.png', :size => "100x100" %> 麺類
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = '麺'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'pan.png', :size => "100x100" %> パン・ピザ
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = 'パン・ピザ'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'kona.png', :size => "100x100" %> 粉もの
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = '粉もの'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'ten.png', :size => "100x100" %> 揚げ物
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = '揚げ物'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'nabe.png', :size => "100x100" %> 鍋もの
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, options_for_select(Cuisine.where("genre = '鍋もの'").select("id,name").map{|f| [f.name, f.id]}), {}, {:include_blank => true, :class => "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'kobati.png', :size => "100x100" %> おつまみ・小鉢
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = 'おつまみ・小鉢'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'dore.jpg', :size => "100x100" %> ソース・ドレッシング
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = 'たれ・ソース・ドレッシング'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'drink.png', :size => "100x100" %> ドリンク
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, Cuisine.where("genre = 'ドリンク'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+      </div>
+    </table>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(".chosen").chosen();
+  $(".chosen-deselect").chosen({allow_single_deselect:true});
+</script>

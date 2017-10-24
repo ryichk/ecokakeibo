@@ -1,0 +1,25 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+<header class="header">
+  <div class="header__bar row">
+    <% if logged_in? %>
+      <div class="user_nav grid-6">
+        <a class="ny1 bt" href="/kakeibos/new">家計簿入力</a>
+        <a class="ny2 bt" href="/meals/new">食事入力</a>
+        <div class="image1" style="background-image: url(<%= current_user.avatar.url(:medium) %>);"></div>
+          <span><%= current_user.name %>
+            <ul class="user__info">
+              <li><a href="/users/<%= current_user.id %>", class="btn btn-lg btn-primary">マイページ</a></li>
+              <li><%= link_to "ログアウト", logout_path, method: "delete", class: "btn btn-lg btn-primary" %></li>
+              <li><%= link_to "設定", edit_user_path(current_user), class: "btn btn-lg btn-primary" %></li>
+            </ul>
+          </span>
+      </div>
+    <% else %>
+      <div class="grid-6">
+        <%= link_to "ログイン", login_path, class: "post" %>
+        <%= link_to "新規登録", signup_path, class: "post" %>
+      </div>
+    <% end %>
+  </div>
+</header>
+</div>

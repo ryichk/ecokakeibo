@@ -1,0 +1,23 @@
+<h1>ログイン</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.label :メールアドレス %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :パスワード %>
+      <%= link_to "(パスワードを忘れた)", password_resets_new_path %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :パスワードを記憶, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span>パスワードを記憶させる</span>
+      <% end %>
+
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
+    <% end %>
+
+    <P>登録してますか?<%= link_to "新規登録!", signup_path %></P>
+  </div>
+</div>

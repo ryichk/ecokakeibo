@@ -1,0 +1,2 @@
+module KakeibosHelper
+end
