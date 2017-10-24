@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   has_many :kakeibos, dependent: :destroy
   has_many :envs, through: :kakeibos
-
+  has_many :meals
 
   #与えられた文字列のハッシュ値を返す
   def User.digest(string)
