@@ -3,8 +3,7 @@ class KakeibosController < ApplicationController
   before_action :kakeibo_in, only: :env
 
   def index
-    @user = User.find(current_user.id)
-    @kakeibos = @user.kakeibos
+
     @kakeibos = Kakeibo.includes(:user).page(params[:page]).order("month ASC")
     @denki_data = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC").sum(:denki_cost)
     @gas_data = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC").sum(:gas_cost)
@@ -21,15 +20,15 @@ class KakeibosController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @denki = @user.kakeibos.group(:month).sum(:denki_env)
-    @gas = @user.kakeibos.group(:month).sum(:gas_env)
-    @suidou = @user.kakeibos.group(:month).sum(:suidou_env)
-    @month = @user.kakeibos.group(:month).order('month ASC').last
-    @env = @user.kakeibos.group(:month).sum(:env_load)
-    @meal_vw = @user.meals.sum(:virtualwater)
-    @meal_fm = @user.meals.sum(:foodmileage)
-    @vw = @user.meals.group(:created_at).order('created_at ASC').sum(:virtualwater)
-    @fm = @user.meals.group(:created_at).order('created_at ASC').sum(:foodmileage)
+    @denki = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order("month ASC").sum(:denki_env)
+    @gas = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order("month ASC").sum(:denki_env)
+    @suidou = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order("month ASC").sum(:denki_env)
+    @month = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order('month ASC').last
+    @env = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).sum(:env_load)
+    @meal_vw = Meal.includes(:user).where(user_id: current_user.id).sum(:virtualwater)
+    @meal_fm = Meal.includes(:user).where(user_id: current_user.id).sum(:foodmileage)
+    @vw = Meal.where(user_id: current_user.id).group(:created_at).sum(:virtualwater)
+    @fm = Meal.where(user_id: current_user.id).group(:created_at).order('created_at ASC').sum(:foodmileage)
   end
 
   def create

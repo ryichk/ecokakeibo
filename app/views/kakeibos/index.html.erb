@@ -2,6 +2,7 @@
   <div class="contents row">
     <%= render partial: "kakeibo" %>
   </div>
+  <hr>
   <div class="graph">
     <h3 id="denki"><%= image_tag 'denki1.png', class: 'image' %>￥電気料金推移</h3>
       <%= column_chart @denki_data, height: "500px", width: "450px", colors: ["#98fb98"] %>
@@ -14,7 +15,7 @@
     <h3 id="suidou"><%= image_tag 'mizu.png', class: 'image' %>￥水道料金推移</h3>
       <%= column_chart @suidou_data, height: "500px", width: "450px", colors: ["#afeeee"] %>
   </div>
-
+  <hr>
   <div class="graph">
     <h3 id="denki"><%= image_tag 'denki1.png', class: 'image' %>電気使用量推移</h3>
       <%= column_chart @denki, height: "500px", width: "450px", colors: ["#98fb98"] %>

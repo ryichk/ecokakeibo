@@ -61,6 +61,7 @@
   </div>
 </div>
 <% end %>
+<hr>
 <div class="contents">
   <h1><%= image_tag 'vw.jpeg', :size => "50x50" %> 総バーチャルウォーター量</h1>
   <div class="vw"><h1><%= @meal_vw.round.floor.to_s(:delimited) %> L</h1></div>
@@ -69,6 +70,7 @@
       <%= column_chart @vw, height: "500px", width: "450px", colors: ["66FFFF"] %>
   </div>
 </div>
+<hr>
 <div class="contents">
   <h1>総フードマイレージCO2排出量</h1>
   <div class="fm"><h1><%= @meal_fm.round.floor.to_s(:delimited) %> g</h1></div>

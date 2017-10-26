@@ -284,8 +284,8 @@ class Meal < ApplicationRecord
       self.soba_vw = b.to_f / 2.000 * 4.600
       self.soba_fm = b.to_f / 2.000 * 0.000001 * 15396 * 289
     end
-    if a.include?('スパゲッティ') || a.include?('パスタ(スパゲッティ)') || a.include?('スパゲッティ(細めのもの)') || a.include?('　・スパゲッティ') || a.include?('パスタ（スパゲッティ）') || a.include?('スパゲッティ（1.6mm）') || a.include?('スパゲッティ(1.4mm)') || a.include?('スパゲッティ(カッペリーニなど極細のもの、またはそうめん)') || a.include?('スパゲッティ(1.8mm)') || a.include?('フェデリーニ(細めのスパゲッティ)') || a.include?('スパゲッティ（細め）') || a.include?('細めのスパゲッティ(1.2～1.5mm)') || a.include?('スパゲッティ(1.9mm)') || a.include?('スパゲッティ(1.6mm)')
-      b = a["スパゲッティ"] || a["パスタ(スパゲッティ)"] || a["スパゲッティ(細めのもの)"] || a["　・スパゲッティ"] || a["パスタ（スパゲッティ）"] || a["スパゲッティ（1.6mm）"] || a["スパゲッティ(1.4mm)"] || a["スパゲッティ(カッペリーニなど極細のもの、またはそうめん)"] || a["スパゲッティ(1.8mm)"] || a["フェデリーニ(細めのスパゲッティ)"] || a["スパゲッティ（細め）"] || a["細めのスパゲッティ(1.2～1.5mm)"] || a["スパゲッティ(1.9mm)"] || a["スパゲッティ(1.6mm)"]
+    if a.include?('スパゲッティ') || a.include?('パスタ(スパゲッティ)') || a.include?('スパゲッティ(細めのもの)') || a.include?('　・スパゲッティ') || a.include?('パスタ（スパゲッティ）') || a.include?('スパゲッティ（1.6mm）') || a.include?('スパゲッティ(1.4mm)') || a.include?('スパゲッティ(カッペリーニなど極細のもの、またはそうめん)') || a.include?('スパゲッティ(1.8mm)') || a.include?('フェデリーニ(細めのスパゲッティ)') || a.include?('スパゲッティ（細め）') || a.include?('細めのスパゲッティ(1.2～1.5mm)') || a.include?('スパゲッティ(1.9mm)') || a.include?('スパゲッティ(1.6mm)') || a.include?('マカロニ')
+      b = a["スパゲッティ"] || a["パスタ(スパゲッティ)"] || a["スパゲッティ(細めのもの)"] || a["　・スパゲッティ"] || a["パスタ（スパゲッティ）"] || a["スパゲッティ（1.6mm）"] || a["スパゲッティ(1.4mm)"] || a["スパゲッティ(カッペリーニなど極細のもの、またはそうめん)"] || a["スパゲッティ(1.8mm)"] || a["フェデリーニ(細めのスパゲッティ)"] || a["スパゲッティ（細め）"] || a["細めのスパゲッティ(1.2～1.5mm)"] || a["スパゲッティ(1.9mm)"] || a["スパゲッティ(1.6mm)"] || a["マカロニ"]
       if b == "人数分(１人80g)"
         self.supagety_vw = 80 * 2.00
         self.supagety_fm = 80 * 0.000001 * 15396 * 289
@@ -317,7 +317,7 @@ class Meal < ApplicationRecord
       elsif b == "50g" || b == "４～５cm（太いものは縦に切って約50g）" || b == "２cm(50g)" || b == "1/4カップ"
         self.daikon_vw = 25 * 0.128
         self.daikon_fm = 25 * 0.000001 * 15396 * 289
-      elsif b == "約３cm(80g)"
+      elsif b == "約３cm(80g)" || b == "1/2カップ"
         self.daikon_vw = 40 * 0.128
         self.daikon_fm = 40 * 0.000001 * 15396 * 289
       elsif b == "200g" || b == "４cm(約200g)" || b == "1/6本（約200g)" || b == "５cm(150～200g)" || b.include?("１カップ")
@@ -737,6 +737,9 @@ class Meal < ApplicationRecord
       elsif b == "２個"
         self.tomato_vw = 10 * 0.131
         self.tomato_fm = 10
+      elsif b == "10個"
+        self.tomato_vw = 50 * 0.131
+        self.tomato_fm = 50
       else
         self.tomato_vw = b.to_f / 2 * 10 * 0.131
         self.tomato_fm = b.to_f / 2 * 10
@@ -846,8 +849,8 @@ class Meal < ApplicationRecord
         self.edamame_fm = b.to_f / 2.000
       end
     end
-    if a.include?('さやいんげん') || a.include?('さやいんげん(冷凍)') || a.include?('さやいんげん、こごみ') || a.include?('白いんげん豆缶') || a.include?('いんげん(３cm長さ)') || a.include?('いんげん(斜め小口切り)') || a.include?('　・さやいんげん') || a.include?('白いんげん豆の水煮缶') || a.include?('白いんげん豆(乾燥)')
-      b = a["さやいんげん"] || a['さやいんげん(冷凍)'] || a['さやいんげん、こごみ'] || a['白いんげん豆缶'] || a['いんげん(３cm長さ)'] || a['いんげん(斜め小口切り)'] || a['　・さやいんげん'] || a['白いんげん豆の水煮缶'] || a['白いんげん豆(乾燥)']
+    if a.include?('さやいんげん') || a.include?('さやいんげん(冷凍)') || a.include?('さやいんげん、こごみ') || a.include?('白いんげん豆缶') || a.include?('いんげん(３cm長さ)') || a.include?('いんげん(斜め小口切り)') || a.include?('　・さやいんげん') || a.include?('白いんげん豆の水煮缶') || a.include?('白いんげん豆(乾燥)') || a.include?('いんげん')
+      b = a["さやいんげん"] || a['さやいんげん(冷凍)'] || a['さやいんげん、こごみ'] || a['白いんげん豆缶'] || a['いんげん(３cm長さ)'] || a['いんげん(斜め小口切り)'] || a['　・さやいんげん'] || a['白いんげん豆の水煮缶'] || a['白いんげん豆(乾燥)'] || a['いんげん']
       self.ingen_vw = b.to_f / 2.000 * 0.311
     end
     if a.include?('とうもろこし') || a.include?('生とうもろこし') || a.include?('ゆでてほぐしたとうもろこし(または解凍した冷凍コーン)') || a.include?('とうもろこし(ゆでたもの)')
@@ -1445,7 +1448,10 @@ class Meal < ApplicationRecord
       b = a["塩"]
       if b.include?('')
         self.sio_vw = b.to_f / 2 * 0.008
-        self.sio_vw = b.to_f / 2
+        self.sio_fm = b.to_f / 2
+      elsif b.include?('適宣')
+        self.sio_vw = 5 / 2 * 0.008
+        self.sio_fm = 5 / 2
       end
     end
     if a.include?('しょうゆ') || a.include?('　・しょうゆ、酢') || a.include?('　・しょうゆ') || a.include?('　・酒、しょうゆ、砂糖') || a.include?('　・しょうゆ、オイスターソース、酒、酢') || a.include?('　・しょうゆ、みりん') || a.include?('　・酒、しょうゆ') || a.include?('　・しょうゆ、酒、みりん') || a.include?('　・しょうゆ、砂糖') || a.include?('　・しょうゆ、ごま油') || a.include?('　・酢、しょうゆ') || a.include?('　・しょうゆ、酒') || a.include?('　・マヨネーズ、レモン汁、しょうゆ') || a.include?(' ・しょうゆ') || a.include?('うす口しょうゆ(またはしょうゆ)') || a.include?('　・おろししょうが、砂糖、しょうゆ') || a.include?('　・白すりごま、しょうゆ') || a.include?('　・塩、しょうゆ') || a.include?('　・オイスターソース、しょうゆ') || a.include?('　・オリーブ油、しょうゆ') || a.include?('　・ごま油、サラダ油、しょうゆ、酒、水') || a.include?('　・しょうゆ、トマトケチャップ') || a.include?('　・しょうゆ、砂糖、片栗粉') || a.include?('うす口しょうゆ(またはしょうゆ)') || a.include?('　・しょうゆ、砂糖、酒、ごま油、片栗粉') || a.include?('　・しょうゆ、白すりごま') || a.include?('　・砂糖、しょうゆ') || a.include?('　・しょうゆ、みそ') || a.include?('しょうゆ、砂糖') || a.include?('　・粒マスタード、はちみつ、マヨネーズ、しょうゆ') || a.include?('　・白すりごま、しょうゆ') || a.include?('　・豆板醤(トウバンジャン)、しょうゆ、酢') || a.include?('　・しょうゆ、とりガラスープの素') || a.include?('　・しょうゆ、みりん、酒') || a.include?('　・チリソース(またはトマトケチャップ)、しょうゆ') || a.include?('　・はちみつ、しょうゆ') || a.include?('薄口しょうゆ') || a.include?('　・バルサミコ酢、しょうゆ') || a.include?('　・しょうゆ、酢、しょうがのせん切り') || a.include?('　・しょうゆ、オイスターソース') || a.include?('　　・しょうゆ、酢') || a.include?('　・練りわさび、しょうゆ') || a.include?('　・しょうゆ、みりん、砂糖') || a.include?('　・酒、しょうゆ、みりん') || a.include?('　・トマトケチャップ、しょうゆ') || a.include?('うす口しょうゆ(またはしょうゆ小さじ１＋塩少々)') || a.include?('　・しょうゆ、はちみつ') || a.include?('　・うす口しょうゆ') || a.include?('　・酢、しょうゆ、砂糖') || a.include?('　・しょうゆ、塩') || a.include?('　・酢、しょうゆ、砂糖') || a.include?('ナンプラー(またはしょうゆ)') || a.include?('　・砂糖、酒、しょうゆ') || a.include?('　・おろししょうが、しょうゆ、砂糖、酢') || a.include?('　・しょうゆ、黒酢') || a.include?('　・レモン汁、しょうゆ') || a.include?('　　・しょうゆ') || a.include?('　・しょうゆ、ごま油、白すりごま')

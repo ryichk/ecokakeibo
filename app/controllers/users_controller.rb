@@ -6,11 +6,11 @@ class UsersController < ApplicationController
 
   def index
     @user = User.where(setai: current_user.setai).select('id')
-    co2_ids = Kakeibo.where(user_id: @user).group(:user_id).order('sum_env_load ASC').sum(:env_load).keys
+    co2_ids = Kakeibo.includes(:user).where(user_id: @user).group(:user_id).order('sum_env_load ASC').sum(:env_load).keys
     @ranking1 = co2_ids.map { |id| User.find(id) }
-    vw_ids = Meal.where(user_id: @user).group(:user_id).order('sum_virtualwater ASC').sum(:virtualwater).keys
+    vw_ids = Meal.includes(:user).where(user_id: @user).group(:user_id).order('sum_virtualwater ASC').sum(:virtualwater).keys
     @ranking2 = vw_ids.map { |id| User.find(id) }
-    fm_ids = Meal.where(user_id: @user).group(:user_id).order('sum_foodmileage ASC').sum(:foodmileage).keys
+    fm_ids = Meal.includes(:user).where(user_id: @user).group(:user_id).order('sum_foodmileage ASC').sum(:foodmileage).keys
     @ranking3 = fm_ids.map { |id| User.find(id) }
     @setai = User.find(current_user.id)
   end

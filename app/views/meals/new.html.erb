@@ -14,7 +14,7 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, options_for_select(Cuisine.where("(genre = ?) OR (genre = ?)", '野菜のおかず', 'サラダ').select("id,name").map{|f| [f.name, f.id]}), {}, {:include_blank => true, :class => "chosen"} %>
+              <%= f.select :cuisine_id, options_for_select(@yasai), {}, {:include_blank => true, :class => "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -26,7 +26,7 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = '肉のおかず'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.select :cuisine_id, @niku, {}, {:include_blank => true, class: "chosen"} %>
              <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -38,7 +38,7 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = '魚介のおかず'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.select :cuisine_id, @sakana, {}, {:include_blank => true, class: "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -50,7 +50,7 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = '卵・大豆製品'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.select :cuisine_id, @tamago, {}, {:include_blank => true, class: "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -62,7 +62,7 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = 'シチュー・スープ・汁物'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.select :cuisine_id, @soup, {}, {:include_blank => true, class: "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -74,7 +74,7 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = 'ごはんもの'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.select :cuisine_id, @gohan, {}, {:include_blank => true, class: "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -86,7 +86,7 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = 'パスタ・グラタン'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.select :cuisine_id, @pasta, {}, {:include_blank => true, class: "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -98,7 +98,7 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = '麺'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.select :cuisine_id, @men, {}, {:include_blank => true, class: "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -110,7 +110,7 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = 'パン・ピザ'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.select :cuisine_id, @pan, {}, {:include_blank => true, class: "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -122,7 +122,7 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = '粉もの'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.select :cuisine_id, @kona, {}, {:include_blank => true, class: "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -134,7 +134,7 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = '揚げ物'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.select :cuisine_id, @agemono, {}, {:include_blank => true, class: "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -146,43 +146,19 @@
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, options_for_select(Cuisine.where("genre = '鍋もの'").select("id,name").map{|f| [f.name, f.id]}), {}, {:include_blank => true, :class => "chosen"} %>
+              <%= f.select :cuisine_id, options_for_select(@nabe), {}, {:include_blank => true, :class => "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
         </tr>
         <tr>
           <th>
-            <%= image_tag 'kobati.png', :size => "100x100" %> おつまみ・小鉢
+            <%= image_tag 'kobati.png', :size => "100x100" %> 小鉢
           </th>
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = 'おつまみ・小鉢'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
-              <%= f.submit "登録", class: "btn-syoku" %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= image_tag 'dore.jpg', :size => "100x100" %> ソース・ドレッシング
-          </th>
-          <td>
-            <%= form_for @meal do |f| %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = 'たれ・ソース・ドレッシング'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
-              <%= f.submit "登録", class: "btn-syoku" %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= image_tag 'drink.png', :size => "100x100" %> ドリンク
-          </th>
-          <td>
-            <%= form_for @meal do |f| %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, Cuisine.where("genre = 'ドリンク'").select("id,name").map{|f| [f.name, f.id]}, {}, {:include_blank => true, class: "chosen"} %>
+              <%= f.select :cuisine_id, @kobachi, {}, {:include_blank => true, class: "chosen"} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
