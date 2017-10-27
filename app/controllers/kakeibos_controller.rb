@@ -3,14 +3,14 @@ class KakeibosController < ApplicationController
   before_action :kakeibo_in, only: :env
 
   def index
-
     @kakeibos = Kakeibo.includes(:user).page(params[:page]).order("month ASC")
-    @denki_data = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC").sum(:denki_cost)
-    @gas_data = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC").sum(:gas_cost)
-    @suidou_data = Kakeibo.where(user_id: current_user.id).group(:month).sum(:suidou_cost)
-    @denki = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC").sum(:denki)
-    @gas = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC").sum(:gas)
-    @suidou = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC").sum(:suidou)
+    @kakeibo = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order("month ASC")
+    @denki_data = @kakeibo.sum(:denki_cost)
+    @gas_data = @kakeibo.sum(:gas_cost)
+    @suidou_data = @kakeibo.sum(:suidou_cost)
+    @denki = @kakeibo.sum(:denki)
+    @gas = @kakeibo.sum(:gas)
+    @suidou = @kakeibo.sum(:suidou)
   end
 
 
@@ -20,15 +20,17 @@ class KakeibosController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @denki = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order("month ASC").sum(:denki_env)
-    @gas = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order("month ASC").sum(:denki_env)
-    @suidou = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order("month ASC").sum(:denki_env)
-    @month = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order('month ASC').last
-    @env = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).sum(:env_load)
-    @meal_vw = Meal.includes(:user).where(user_id: current_user.id).sum(:virtualwater)
-    @meal_fm = Meal.includes(:user).where(user_id: current_user.id).sum(:foodmileage)
-    @vw = Meal.where(user_id: current_user.id).group(:created_at).sum(:virtualwater)
-    @fm = Meal.where(user_id: current_user.id).group(:created_at).order('created_at ASC').sum(:foodmileage)
+    @kakeibo = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order("month ASC")
+    @meal = Meal.where(user_id: current_user.id)
+    @denki = @kakeibo.sum(:denki_env)
+    @gas = @kakeibo.sum(:denki_env)
+    @suidou = @kakeibo.sum(:denki_env)
+    @month = @kakeibo.last
+    @env = @kakeibo.sum(:env_load)
+    @meal_vw = @meal.sum(:virtualwater)
+    @meal_fm = @meal.sum(:foodmileage)
+    @vw = @meal.group(:created_at).sum(:virtualwater)
+    @fm = @meal.group(:created_at).order('created_at ASC').sum(:foodmileage)
   end
 
   def create
