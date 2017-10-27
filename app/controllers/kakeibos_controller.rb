@@ -3,8 +3,8 @@ class KakeibosController < ApplicationController
   before_action :kakeibo_in, only: :env
 
   def index
-    @kakeibos = Kakeibo.includes(:user).page(params[:page]).order("month ASC")
-    @kakeibo = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order("month ASC")
+    @kakeibos = Kakeibo.page(params[:page]).order("month ASC")
+    @kakeibo = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC")
     @denki_data = @kakeibo.sum(:denki_cost)
     @gas_data = @kakeibo.sum(:gas_cost)
     @suidou_data = @kakeibo.sum(:suidou_cost)
@@ -20,7 +20,7 @@ class KakeibosController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @kakeibo = Kakeibo.includes(:user).where(user_id: current_user.id).group(:month).order("month ASC")
+    @kakeibo = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC")
     @meal = Meal.where(user_id: current_user.id)
     @denki = @kakeibo.sum(:denki_env)
     @gas = @kakeibo.sum(:denki_env)
