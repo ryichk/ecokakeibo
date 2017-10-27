@@ -8,7 +8,7 @@ class MealsController < ApplicationController
   def new
     @meal = Meal.new
     @cuisines = Cuisine.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
-    @yasai = Cuisine.where("(genre = ?) OR (genre = ?)", '野菜のおかず', 'サラダ').select("id,name").map{|f| [f.name, f.id]}
+    @yasai = Cuisine.where("genre = '野菜'").select("id,name").map{|f| [f.name, f.id]}
     @niku = Cuisine.where("genre = '肉のおかず'").select("id,name").map{|f| [f.name, f.id]}
     @sakana = Cuisine.where("genre = '魚介のおかず'").select("id,name").map{|f| [f.name, f.id]}
     @tamago = Cuisine.where("genre = '卵・大豆製品'").select("id,name").map{|f| [f.name, f.id]}
