@@ -7,8 +7,8 @@
   </ul>
 
   <ul class="cuisine">
-    <% @meals.each do |a| %>
-      <% Cuisine.where(id: a.cuisine_id).each do |i| %>
+    <% @meals.each do |meal| %>
+      <% Cuisine.where(id: meal.cuisine_id).each do |i| %>
         <li><%= i.name %><br>⭐️
          <%= i.calorie %>カロリー
         </li>
