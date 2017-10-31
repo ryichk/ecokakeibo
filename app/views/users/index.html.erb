@@ -10,7 +10,6 @@
       <li>
         <%= i %>位
         <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
-        <a href="/kakeibos/<%= user.id %>" class="rank">
           <%= user.name %>
         </a>
         <img src="<%= user.avatar_file_name %>" alt="">
@@ -28,8 +27,9 @@
       <li>
         <%= i %>位
         <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
-        <a href="/kakeibos/<%= user.id %>" class="rank">
+        <h3 class="rank">
           <%= user.name %>
+        </h3>
         </a>
         <img src="<%= user.avatar_file_name %>" alt="">
       </li>
@@ -46,9 +46,9 @@
       <li>
         <%= i %>位
         <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
-        <a href="/kakeibos/<%= user.id %>" class="rank">
+        <h3 class="rank">
           <%= user.name %>
-        </a>
+        </h3>
         <img src="<%= user.avatar_file_name %>" alt="">
       </li>
     <% end %>

@@ -8,9 +8,9 @@
         <div class="image1" style="background-image: url(<%= current_user.avatar.url(:medium) %>);"></div>
           <span><%= current_user.name %>
             <ul class="user__info">
-              <li><a href="/users/<%= current_user.id %>", class="btn btn-lg btn-primary">マイページ</a></li>
-              <li><%= link_to "ログアウト", logout_path, method: "delete", class: "btn btn-lg btn-primary" %></li>
-              <li><%= link_to "設定", edit_user_path(current_user), class: "btn btn-lg btn-primary" %></li>
+              <li><a href="/users/<%= current_user.id %>", class="btn">マイページ</a></li>
+              <li><%= link_to "ログアウト", logout_path, method: "delete", class: "btn" %></li>
+              <li><%= link_to "設定", edit_user_path(current_user), class: "btn" %></li>
             </ul>
           </span>
       </div>
