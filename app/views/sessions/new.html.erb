@@ -3,11 +3,10 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :メールアドレス %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :ID %>
+      <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :パスワード %>
-      <%= link_to "(パスワードを忘れた)", password_resets_new_path %>
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :パスワードを記憶, class: "checkbox inline" do %>

@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
   def index
-    @meal = Meal.where(user_id: current_user.id).order('created_at').select('cuisine_id')
-    @calorie = Cuisine.where(id: @meal)
+    @meals = Meal.where(user_id: current_user.id).order('created_at')
+    @meal = Cuisine.where(id: @meals)
     @meal_date = Meal.where(user_id: current_user.id)
   end
 

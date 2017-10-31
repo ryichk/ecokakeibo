@@ -1,14 +1,18 @@
 <h2>カロリー手帳</h2>
-<ul class="date">
-  <% @meal_date.each do |m| %>
-    <li><%= m.created_at.in_time_zone('Tokyo').to_s(:published_on) %></li>
-  <% end %>
-</ul>
+<div class="techo">
+  <ul class="date">
+    <% @meal_date.each do |m| %>
+      <li><%= m.created_at.in_time_zone('Tokyo').to_s(:published_on) %></li>
+    <% end %>
+  </ul>
 
-<ul class="cuisine">
-  <% @calorie.each do |i| %>
-    <li><%= i.name %><br>⭐️
-      <%= i.calorie %>カロリー
-    </li>
-  <% end %>
-</ul>
+  <ul class="cuisine">
+    <% @meals.each do |a| %>
+      <% Cuisine.where(id: a.cuisine_id).each do |i| %>
+        <li><%= i.name %><br>⭐️
+         <%= i.calorie %>カロリー
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
