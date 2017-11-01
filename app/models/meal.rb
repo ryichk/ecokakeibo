@@ -656,7 +656,7 @@ class Meal < ApplicationRecord
       elsif b == "1/2個" || b == "1/2個分" || b == "各1/2個" || b == "横1/2個" || b == "中1/2個(約100g)" || b == "1/2個(100g)" || b == "中1/2個" || b == "小１個(約100g)" || b == "小１個" || b == "1/2個分(約100g)" || b == "１/2個(約100g)" || b == "1/3量(約100g)" || b == "大1/2個" || b == "小１個(約120g)" || b == "大さじ４"
         self.tamanegi_vw = 50 * 0.158
         self.tamanegi_fm = 50
-      elsif b.include?('1/4') || b == "中1/3個(50g)" || b == "各50g" || b == "大さじ２(約1/4個分)" || b == "50g" || b == "大さじ２" || b == "大さじ３"
+      elsif b.include?('1/4') || b == "中1/3個(50g)" || b == "各50g" || b == "大さじ２(約1/4個分)" || b == "50g" || b == "大さじ２" || b == "大さじ３" || b == "1/4個"
         self.tamanegi_vw = 25 * 0.158
         self.tamanegi_fm = 25
       elsif b.include?('1/8')
@@ -856,15 +856,15 @@ class Meal < ApplicationRecord
       b = a["さやいんげん"] || a['さやいんげん(冷凍)'] || a['さやいんげん、こごみ'] || a['白いんげん豆缶'] || a['いんげん(３cm長さ)'] || a['いんげん(斜め小口切り)'] || a['　・さやいんげん'] || a['白いんげん豆の水煮缶'] || a['白いんげん豆(乾燥)'] || a['いんげん']
       self.ingen_vw = b.to_f / 2.000 * 0.311
     end
-    if a.include?('とうもろこし') || a.include?('生とうもろこし') || a.include?('ゆでてほぐしたとうもろこし(または解凍した冷凍コーン)') || a.include?('とうもろこし(ゆでたもの)')
-      b = a["とうもろこし"] || a['生とうもろこし'] || a['ゆでてほぐしたとうもろこし(または解凍した冷凍コーン)'] || a['とうもろこし(ゆでたもの)']
+    if a.include?('とうもろこし') || a.include?('コーン')
+      b = a["とうもろこし"] || a['コーン']
       if b.include?('１本')
         self.tomorokoshi_vw = 125 * 0.434
         self.tomorokoshi_fm = 125
       elsif b.include?('1/2本')
         self.tomorokoshi_vw = 125 / 2 * 0.434
         self.tomorokoshi_fm = 125 / 2
-      elsif b == "大さじ２～３" || b == "大さじ３" || b == "正味大さじ２"
+      elsif b == "大さじ２" || b == "大さじ３" || b == "正味大さじ２"
         self.tomorokoshi_vw = 30 * 0.434
         self.tomorokoshi_fm = 30
       end

@@ -78,6 +78,7 @@ gem 'jquery-turbolinks'
 gem 'compass-rails'
 group :production do
   gem 'rails_12factor'
+  gem 'pg'
 end
  group :production, :staging do
   gem 'unicorn'
