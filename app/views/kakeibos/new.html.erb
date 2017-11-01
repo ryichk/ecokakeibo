@@ -16,7 +16,7 @@
                 <%= image_tag 'denki1.png', :size => "100x100" %>電気
               </th>
               <td>
-                <%= f.number_field :denki, placeholder: '使用量（kWh）' %>
+                <%= f.number_field :denki, placeholder: '１ヶ月分の使用量（kWh）' %>
                 <%= f.number_field :denki_cost, placeholder: '料金（¥)' %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
               </td>
@@ -26,7 +26,7 @@
                 <%= image_tag 'gasu1.png', :size => "100x100" %>ガス
               </th>
               <td>
-                <%= f.number_field :gas, placeholder: '使用量（m3）' %>
+                <%= f.number_field :gas, placeholder: '１ヶ月分の使用量（m3）' %>
                 <%= f.number_field :gas_cost, placeholder: '料金（¥）' %>
               </td>
             </tr>
@@ -35,7 +35,7 @@
                 <%= image_tag 'mizu.png', :size => "100x100" %>水道
               </th>
               <td>
-                <%= f.number_field :suidou, placeholder: '使用量（m3）' %>
+                <%= f.number_field :suidou, placeholder: '１ヶ月分の使用量（m3）' %>
                 <%= f.number_field :suidou_cost, placeholder: '料金（¥）' %>
               </td>
             </tr>
