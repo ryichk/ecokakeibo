@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'https://www.google.com/jsapi', 'https://www.gstatic.com/charts/loader.js', 'application', 'data-turbolinks-track' => true %>
-    <%= render 'layouts/shim' %>
-    <meta name="viewport" content="width=divice-width, initial-scale=1.0, maximum-scale=0.6667, user-scalable=0;">
+<% cache do %>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'https://www.google.com/jsapi', 'https://www.gstatic.com/charts/loader.js', 'application', 'data-turbolinks-track' => true %>
+      <%= render 'layouts/shim' %>
+      <meta name="viewport" content="width=divice-width, initial-scale=1.0, maximum-scale=0.6667, user-scalable=0;">
 
-    <link href="https://fonts.googleapis.com/earlyaccess/sawarabigothic".css" rel="stylesheet" />
-  </head>
-
+      <link href="https://fonts.googleapis.com/earlyaccess/sawarabigothic".css" rel="stylesheet" />
+    </head>
+<% end %>
   <body>
     <%= render 'layouts/header' %>
   <div class="container">
