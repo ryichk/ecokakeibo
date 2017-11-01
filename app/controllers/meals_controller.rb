@@ -1,7 +1,6 @@
 class MealsController < ApplicationController
   def index
     @meals = Meal.where(user_id: current_user.id).order('created_at')
-    @meal_date = Meal.where(user_id: current_user.id)
   end
 
   def new

@@ -1,6 +1,5 @@
 class KakeibosController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :create, :destroy]
-  before_action :kakeibo_in, only: :env
 
   def index
     @kakeibos = Kakeibo.page(params[:page]).order("month ASC")

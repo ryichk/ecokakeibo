@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   before_create :create_activation_digest
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 10 }
 
   validates :setai, presence: true, length: { minimum: 1, maximum: 3 }, numericality: { greater_than_or_equal_to: 1}
   has_secure_password

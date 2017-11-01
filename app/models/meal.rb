@@ -68,7 +68,7 @@ class Meal < ApplicationRecord
       elsif b == "２枚(260g)" || b == "２枚"
         self.buta_vw = 130 * 5.9
         self.buta_fm = 130 * 0.000001 * 15396 * 1461
-      elsif b == "４～６本(約300g)" || b == "５枚"
+      elsif b == "４～６本(約300g)" || b == "５枚" || b == "４本"
         self.buta_vw = 150 * 5.9
         self.buta_fm = 150 * 0.000001 * 15396 * 1461
       elsif b == "６枚(約180g)" || b == "６枚(180g)"
@@ -262,15 +262,18 @@ class Meal < ApplicationRecord
         self.pan_fm = b.to_f / 2.000 * 60 * 0.000001 * 15396 * 289
       end
     end
-    if a.include?('ゆでうどん')
-      b = a["ゆでうどん"]
-      if b == "１　1/2玉"
-        self.udon_vw = 0.5 / 2.000 * 100 * 1.600
-        self.udon_fm = 0.5 / 2.000 * 60 * 0.000001 * 15396 * 289
+    if a.include?('うどん')
+      b = a["うどん"]
+      if b == "１玉"
+        self.udon_vw = 160 / 2
+        self.udon_fm = 100 / 2
+      if b == "２玉"
+        self.udon_vw = 320 / 2
+        self.udon_fm = 320
       end
     end
-    if a.include?('そうめん') || a.include?('ゆでたそうめん') || a.include?('')
-      b = a["そうめん"] || a["ゆでたそうめん"]
+    if a.include?('そうめん')
+      b = a["そうめん"]
       if b == "1/2束分"
         self.soumen_vw = 0.5 / 2.000 * 70 * 2.000
         self.soumen_fm = 0.5 / 2.000 * 70 * 0.000001 * 15396 * 289
@@ -279,13 +282,13 @@ class Meal < ApplicationRecord
         self.soumen_fm = 1.000 / 2.000 * 100 * 0.000001 * 15396 * 289
       end
     end
-    if a.include?('そば（乾燥・あれば茶そば）')
-      b = a["そば（乾燥・あれば茶そば）"]
+    if a.include?('そば')
+      b = a["そば"]
       self.soba_vw = b.to_f / 2.000 * 4.600
       self.soba_fm = b.to_f / 2.000 * 0.000001 * 15396 * 289
     end
-    if a.include?('スパゲッティ') || a.include?('パスタ(スパゲッティ)') || a.include?('スパゲッティ(細めのもの)') || a.include?('　・スパゲッティ') || a.include?('パスタ（スパゲッティ）') || a.include?('スパゲッティ（1.6mm）') || a.include?('スパゲッティ(1.4mm)') || a.include?('スパゲッティ(カッペリーニなど極細のもの、またはそうめん)') || a.include?('スパゲッティ(1.8mm)') || a.include?('フェデリーニ(細めのスパゲッティ)') || a.include?('スパゲッティ（細め）') || a.include?('細めのスパゲッティ(1.2～1.5mm)') || a.include?('スパゲッティ(1.9mm)') || a.include?('スパゲッティ(1.6mm)') || a.include?('マカロニ')
-      b = a["スパゲッティ"] || a["パスタ(スパゲッティ)"] || a["スパゲッティ(細めのもの)"] || a["　・スパゲッティ"] || a["パスタ（スパゲッティ）"] || a["スパゲッティ（1.6mm）"] || a["スパゲッティ(1.4mm)"] || a["スパゲッティ(カッペリーニなど極細のもの、またはそうめん)"] || a["スパゲッティ(1.8mm)"] || a["フェデリーニ(細めのスパゲッティ)"] || a["スパゲッティ（細め）"] || a["細めのスパゲッティ(1.2～1.5mm)"] || a["スパゲッティ(1.9mm)"] || a["スパゲッティ(1.6mm)"] || a["マカロニ"]
+    if a.include?('スパゲッティ') || a.include?('パスタ') || a.include?('マカロニ')
+      b = a["スパゲッティ"] || a["パスタ"] || a["マカロニ"]
       if b == "人数分(１人80g)"
         self.supagety_vw = 80 * 2.00
         self.supagety_fm = 80 * 0.000001 * 15396 * 289
@@ -297,8 +300,8 @@ class Meal < ApplicationRecord
         self.supagety_fm = b.to_f / 2.000 * 0.000001 * 15396 * 289
       end
     end
-    if a.include?('大根') || a.include?('大根(葉つき)') || a.include?('大根おろし') || a.include?('大根の葉') || a.include?('切り干し大根') || a.include?('　・大根') || a.include?('　・干し大根(出来上がり分より使う)') || a.include?('大根(２mm厚さの薄切り)') || a.include?('大根(２～３mm厚さのいちょう切り)') || a.include?('大根(５cm長さに切り、たて1/4)') || a.include?('大根の葉の小口切り') || a.include?('大根(茎つき)')
-      b = a["大根"] || a["大根(葉つき)"] || a["大根おろし"] || a["大根の葉"] || a["切り干し大根"] || a["　・大根"] || a["　・干し大根(出来上がり分より使う)"] || a["大根(２mm厚さの薄切り)"] || a["大根(２～３mm厚さのいちょう切り)"] || a["大根(５cm長さに切り、たて1/4)"] || a["大根の葉の小口切り"] || a["大根(茎つき)"]
+    if a.include?('大根') || a.include?('大根おろし')
+      b = a["大根"] || a["大根おろし"]
       if b == "４～５cm（100g）" || b == "100g" || b == "約３cm(100g)" || b == "４cm(100g)" || b == "約３cm(100g)" || b == "1/2本分（100g）" || b == "５cm(約100g)" || b == "小４cm(100g)" || b == "２～３cm(約100g)" || b == "約３cm分" || b == "1/2カップ"
         self.daikon_vw = 50 * 0.128
         self.daikon_fm = 50 * 0.000001 * 15396 * 289
@@ -343,8 +346,8 @@ class Meal < ApplicationRecord
         self.daikon_fm = b.to_i * 650 / 34 * 0.000001 * 15396 * 289
       end
     end
-    if a.include?('かぶ') || a.include?('かぶ(葉つき)') || a.include?('　・かぶ')
-      b = a["かぶ"] || a["かぶ(葉つき)"] || a["　・かぶ"]
+    if a.include?('かぶ')
+      b = a["かぶ"]
       if b == "小５個"
         self.kabu_vw = 5 * 30 * 0.208
         self.kabu_fm = 5
@@ -364,8 +367,8 @@ class Meal < ApplicationRecord
         self.kabu_vw = b.to_f * 40 * 0.208
       end
     end
-    if a.include?('にんじん') || a.include?('新にんじん') || a.include?('　・にんじん') || a.include?('にんじん(薄切り)') || a.include?('にんじんのせん切り') || a.include?('　・にんじんのみじん切り') || a.include?('にんじんのすりおろし') || a.include?('にんじん(細切り)') || a.include?('新にんじんのみじん切り') || a.include?('にんじん(１×３cmの短冊切り)') || a.include?('にんじん(５cm長さに切り、たて半分)') || a.include?('にんじん(２mm厚さの半月切り)') || a.include?('　・にんじんの薄切り') || a.include?('にんじん(たて1/4で半分の長さ)') || a.include?('にんじん、セロリ') || a.include?('さつまいも、にんじん') || a.include?('にんじん、ごぼう') || a.include?('　　・玉ねぎのみじん切り、にんじんのみじん切り、セロリのみじん切り')
-      b = a["にんじん"] || a["新にんじん"] || a["　・にんじん"] || a["にんじん(薄切り)"] || a["にんじんのせん切り"] || a["　・にんじんのみじん切り"] || a["にんじんのすりおろし"] || a["にんじん(細切り)"] || a["新にんじんのみじん切り"] || a["にんじん(１×３cmの短冊切り)"] || a["にんじん(５cm長さに切り、たて半分)"] || a["にんじん(２mm厚さの半月切り)"] || a["　・にんじんの薄切り"] || a["にんじん(たて1/4で半分の長さ)"] || a["にんじん、セロリ"] || a["さつまいも、にんじん"] || a["にんじん、ごぼう"] || a["　　・玉ねぎのみじん切り、にんじんのみじん切り、セロリのみじん切り"]
+    if a.include?('にんじん')
+      b = a["にんじん"]
       if b == "１本(約150g)" || b == "１本" || b == "大１本" || b == "小１本" || b == "2/3本(150g)" || b == "小１本分(約150g)"
         self.ninjin_vw = 75 * 0.183
         self.ninjin_fm
@@ -397,8 +400,8 @@ class Meal < ApplicationRecord
         self.ninjin_fm = b.to_f
       end
     end
-    if a.include?('ごぼう') || a.include?('ごぼう(斜め乱切り)') || a.include?('ごぼう(ささがき)') || a.include?('新ごぼう') || a.include?('　・ごぼう') || a.include?('にんじん、ごぼう')
-      b = a["ごぼう"] || a["ごぼう(斜め乱切り)"] || a["ごぼう(ささがき)"] || a["新ごぼう"] || a["　・ごぼう"] || a["にんじん、ごぼう"]
+    if a.include?('ごぼう')
+      b = a["ごぼう"]
       if b == "１本"
         self.gobou_vw = 100 * 0.44
         self.gobou_fm
@@ -431,8 +434,8 @@ class Meal < ApplicationRecord
         self.gobou_fm = 40
       end
     end
-    if a.include?('れんこん') || a.include?('れんこん(細めのもの)') || a.include?('　・れんこん') || a.include?('れんこん、にんじん')
-      b = a["れんこん"] || a["れんこん(細めのもの)"] || a["　・れんこん"] || a["れんこん、にんじん"]
+    if a.include?('れんこん')
+      b = a["れんこん"]
       if b == "１　1/4節(約250g)" || b == "１節(約250g)" || b == "１節"
         self.renkon_vw = 125 * 0.665
         self.renkon_fm = 125
@@ -468,8 +471,8 @@ class Meal < ApplicationRecord
         self.renkon_fm = 10
       end
     end
-    if a.include?('里芋') || a.include?('里いも') || a.include?('里いも(石川早生)') || a.include?('里いも(皮をむき１cm厚さの輪切り)')
-      b = a["里芋"] || a["里いも"] || a["里いも(石川早生)"] || a["里いも(皮をむき１cm厚さの輪切り)"]
+    if a.include?('里芋') || a.include?('里いも')
+      b = a["里芋"] || a["里いも"]
       if b == "６個（400ｇ）" || b == "６個"
         self.satoimo_vw = 200 * 0.673
         self.satoimo_fm = 200
@@ -496,8 +499,8 @@ class Meal < ApplicationRecord
         self.satoimo_fm = 25
       end
     end
-    if a.include?('山芋') || a.include?('長いも') || a.include?('　・長いも') || a.include?('長いものすりおろし')
-      b = a["山芋"] || a["長いも"] || a["　・長いも"] || a["長いものすりおろし"]
+    if a.include?('山芋') || a.include?('長いも')
+      b = a["山芋"] || a["長いも"]
       if b == "５cm(約100g)" || b == "100g" || b == "６cm" || b == "５cm" || b == "３cm(約90g)"
         self.yamaimo_vw = 50 * 0.392
         self.yamaimo_fm = 50
@@ -524,8 +527,8 @@ class Meal < ApplicationRecord
         self.satoimo_fm = 250
       end
     end
-    if a.include?('白菜') || a.include?('白菜キムチ') || a.include?('白菜キムチ（市販品）') || a.include?('白菜(そぎ切り)') || a.include?('　・白菜キムチ') || a.include?('白菜(葉の部分)')
-      b = a["白菜"] || a["白菜キムチ"] || a["白菜キムチ（市販品）"] || a["白菜(そぎ切り)"] || a["　・白菜キムチ"] || a["白菜(葉の部分)"]
+    if a.include?('白菜') || a.include?('白菜キムチ')
+      b = a["白菜"] || a["白菜キムチ"]
       if b == "２～３枚(約250g)" || b == "３枚" || b == "大２枚" || b == "２枚(250g)"
         self.hakusai_vw = 125 * 0.079
         self.hakusai_fm
@@ -552,8 +555,8 @@ class Meal < ApplicationRecord
         self.hakusai_fm = b.to_f / 2.000
       end
     end
-    if a.include?('キャベツ') || a.include?('キャベツのせん切り') || a.include?('キャベツ（外側の葉）') || a.include?('　・キャベツのみじん切り') || a.include?('　・キャベツ') || a.include?('キャベツ、レモン') || a.include?('新キャベツ') || a.include?('紫キャベツ')
-      b = a["キャベツ"] || a["キャベツのせん切り"] || a["キャベツ（外側の葉）"] || a["　・キャベツのみじん切り"] || a["　・キャベツ"] || a["キャベツ、レモン"] || a["新キャベツ"] || a["紫キャベツ"]
+    if a.include?('キャベツ') || a.include?('キャベツのせん切り')
+      b = a["キャベツ"] || a["キャベツのせん切り"]
       if b == "２～３枚(約100g)" || b == "２～３枚" || b == "２枚" || b == "１～２枚" || b == "２枚(100g)" || b == "1/12個(約100g)" || b == "1/8個" || b == "1/8個分"
         self.kyabetsu_vw = 50 * 0.117
         self.kyabetsu_fm = 50
@@ -583,8 +586,8 @@ class Meal < ApplicationRecord
         self.kyabetsu_fm = b.to_f
       end
     end
-    if a.include?('ほうれん草') || a.include?('サラダほうれん草、三つ葉、青とうがらし') || a.include?('ゆでたほうれん草、ゆずの皮のせん切り') || a.include?('ほうれん草ナムル') || a.include?('　・ほうれん草') || a.include?('ゆでたほうれん草') || a.include?('ほうれんそう') || a.include?('ほうれん草(小さな葉の部分)') || a.include?('サラダほうれん草') || a.include?('サラダ用ほうれん草')
-      b = a["ほうれん草"] || a["サラダほうれん草、三つ葉、青とうがらし"] || a["ゆでたほうれん草、ゆずの皮のせん切り"] || a["ほうれん草ナムル"] || a["　・ほうれん草"] || a["ゆでたほうれん草"] || a["ほうれんそう"] || a["ほうれん草(小さな葉の部分)"] || a["サラダほうれん草"] || a["サラダ用ほうれん草"]
+    if a.include?('ほうれん草')
+      b = a["ほうれん草"]
       if b == "小1/2わ（100g）" || b == "1/2わ(約100g)" || b == "小1/2わ(100g)" || b == "1/2わ" || b == "1/2わ分" || b == "1/3わ(約100g)" || b == "1/2束" || b == "100g" || b == "1/3わ" || b == "1/3わ分" || b == "４株"
         self.hourensou_vw = 50 * 0.246
         self.hourensou_fm = 50
@@ -608,8 +611,8 @@ class Meal < ApplicationRecord
         self.hourensou_fm = 75 / 2
       end
     end
-    if a.include?('ねぎ') || a.include?('長ねぎ') || a.include?('長ねぎ（白い部分）') || a.include?('長ねぎのみじん切り') || a.include?('長ねぎの小口切り') || a.include?('長ねぎ(青い部分も含む)') || a.include?('　・長ねぎ') || a.include?('　・長ねぎのみじん切り') || a.include?('　・長ねぎの青い部分') || a.include?('　・長ねぎの粗みじん切り') || a.include?('長ねぎ(上のほう)') || a.include?('長ねぎ（青い部分）のみじん切り') || a.include?('長ねぎの薄切り(白い部分)') || a.include?('長ねぎ(青い部分)の小口切り') || a.include?('長ねぎ(３cm長さ)') || a.include?('長ねぎ(白い部分)') || a.include?('長ねぎ(青い部分)のせん切り')
-      b = a["ねぎ"] || a["長ねぎ"] || a["長ねぎ（白い部分）"] || a["長ねぎのみじん切り"] || a["長ねぎの小口切り"] || a["長ねぎ(青い部分も含む)"] || a["　・長ねぎ"] || a["　・長ねぎのみじん切り"] || a["　・長ねぎの青い部分"] || a["　・長ねぎの粗みじん切り"] || a["長ねぎ(上のほう)"] || a["長ねぎ（青い部分）のみじん切り"] || a["長ねぎの薄切り(白い部分)"] || a["長ねぎ(青い部分)の小口切り"] || a["長ねぎ(３cm長さ)"] || a["長ねぎ(白い部分)"] || a["長ねぎ(青い部分)のせん切り"]
+    if a.include?('ねぎ') || a.include?('長ねぎ')
+      b = a["ねぎ"] || a["長ねぎ"]
       if b == "１本" || b == "各１本"
         self.negi_vw = 50 * 0.433
         self.negi_fm = 50
@@ -645,8 +648,8 @@ class Meal < ApplicationRecord
         self.negi_fm = 175
       end
     end
-    if a.include?('玉ねぎ') || a.include?('玉ねぎのみじん切り') || a.include?('　・紫玉ねぎ') || a.include?('玉ねぎ、赤パプリカ') || a.include?('新玉ねぎ') || a.include?('　　・玉ねぎ') || a.include?('まるごと玉ねぎのスープの玉ねぎ(でき上がり分より使う)') || a.include?('玉ねぎのすりおろし') || a.include?('　・玉ねぎ') || a.include?('　・玉ねぎのみじん切り') || a.include?('　・玉ねぎのすりおろし') || a.include?('じゃがいも、玉ねぎ') || a.include?('　・玉ねぎの薄切り') || a.include?('　・玉ねぎ(みじん切り)') || a.include?('玉ねぎの縦薄切り') || a.include?('紫玉ねぎ') || a.include?('玉ねぎ(みじん切り)') || a.include?('玉ねぎ（楊枝を刺して１cm厚さに切る)') || a.include?('玉ねぎの粗みじん切り') || a.include?('　・玉ねぎのみじん切り、りんごジュース') || a.include?('　・赤玉ねぎのみじん切り') || a.include?('赤玉ねぎのみじん切り') || a.include?('　・玉ねぎの粗みじん切り') || a.include?('玉ねぎ(粗みじん切り)') || a.include?('赤玉ねぎ') || a.include?('・玉ねぎ、トマト') || a.include?('・玉ねぎ') || a.include?('小玉ねぎ') || a.include?('カラーピーマン(赤)、玉ねぎ') || a.include?('　・おろし玉ねぎ') || a.include?('新玉ねぎ(または玉ねぎ)') || a.include?('炒め玉ねぎ(でき上がり分より使う)') || a.include?('玉ねぎ(1/4に切る)') || a.include?('玉ねぎ(玉ねぎ)') || a.include?('ゆでた玉ねぎ(でき上がり分より使う)') || a.include?('玉ねぎ、じゃがいも') || a.include?('紫玉ねぎ(薄切り)') || a.include?('ゆでた玉ねぎ(でき上がり分より使う)') || a.include?('玉ねぎ(薄切り)')
-      b = a['玉ねぎ'] || a['玉ねぎのみじん切り'] || a['　・紫玉ねぎ'] || a['玉ねぎ、赤パプリカ'] || a['新玉ねぎ'] || a['　　・玉ねぎ'] || a['まるごと玉ねぎのスープの玉ねぎ(でき上がり分より使う)'] || a['玉ねぎのすりおろし'] || a['　・玉ねぎ'] || a['　・玉ねぎのみじん切り'] || a['　・玉ねぎのすりおろし'] || a['じゃがいも、玉ねぎ'] || a['　・玉ねぎの薄切り'] || a['　・玉ねぎ(みじん切り)'] || a['玉ねぎの縦薄切り'] || a['紫玉ねぎ'] || a['玉ねぎ(みじん切り)'] || a['玉ねぎ（楊枝を刺して１cm厚さに切る)'] || a['玉ねぎの粗みじん切り'] || a['　・玉ねぎのみじん切り、りんごジュース'] || a['　・赤玉ねぎのみじん切り'] || a['赤玉ねぎのみじん切り'] || a['　・玉ねぎの粗みじん切り'] || a['玉ねぎ(粗みじん切り)'] || a['赤玉ねぎ'] || a['・玉ねぎ、トマト'] || a['・玉ねぎ'] || a['小玉ねぎ'] || a['カラーピーマン(赤)、玉ねぎ'] || a['　・おろし玉ねぎ'] || a['新玉ねぎ(または玉ねぎ)'] || a['炒め玉ねぎ(でき上がり分より使う)'] || a['玉ねぎ(1/4に切る)'] || a['玉ねぎ(玉ねぎ)'] || a['ゆでた玉ねぎ(でき上がり分より使う)'] || a['玉ねぎ、じゃがいも'] || a['紫玉ねぎ(薄切り)'] || a['ゆでた玉ねぎ(でき上がり分より使う)'] || a['玉ねぎ(薄切り)']
+    if a.include?('玉ねぎ')
+      b = a['玉ねぎ']
       if b == "１個" || b == "１個（200g）" || b == "１個(200g)" || b == "１個(約200g)" || b == "各１個" || b == "大１個"
         self.tamanegi_vw = 100 * 0.158
         self.tamanegi_fm = 100
@@ -667,8 +670,8 @@ class Meal < ApplicationRecord
         self.tamanegi_fm = 10
       end
     end
-    if a.include?('なす') || a.include?('米なす') || a.include?('　・なす') || a.include?('　・干しなす(出来上がり分より使う)') || a.include?('　・なす(たて半分の斜め切り)') || a.include?('なす(斜め薄切り)')
-      b = a["なす"] || a['米なす'] || a['　・なす'] || a['　・干しなす(出来上がり分より使う)'] || a['　・なす(たて半分の斜め切り)'] || a['なす(斜め薄切り)']
+    if a.include?('なす')
+      b = a["なす"]
       if b.include?('1') || b.include?('１')
         self.nasu_vw = 40 * 0.185
         self.nasu_fm = 40
@@ -689,8 +692,8 @@ class Meal < ApplicationRecord
         self.nasu_fm = 240
       end
     end
-    if a.include?('トマト') || a.include?('ホールトマト缶') || a.include?('カットトマト缶') || a.include?('　・トマト') || a.include?('トマト水煮缶') || a.include?('トマト(１cm角)') || a.include?('・玉ねぎ、トマト') || a.include?('トマトの輪切り') || a.include?('トマト(完熟)') || a.include?('トマト、ピーマン') || a.include?('　・ホールトマト缶') || a.include?('トマト水煮缶(ホール)') || a.include?('トマト(完熟のもの)') || a.include?('トマト(３mm厚さの輪切り)') || a.include?('トマト（完熟のもの）') || a.include?('完熟トマト') || a.include?('トマト(乱切り)') || a.include?('　・刻んだトマト') || a.include?('トマト(くし形切り)')
-      b = a["トマト"] || a['ホールトマト缶'] || a['カットトマト缶'] || a['　・トマト'] || a['トマト水煮缶'] || a['トマト(１cm角)'] || a['・玉ねぎ、トマト'] || a['トマトの輪切り'] || a['トマト(完熟)'] || a['トマト、ピーマン'] || a['　・ホールトマト缶'] || a['トマト水煮缶(ホール)'] || a['トマト(完熟のもの)'] || a['トマト(３mm厚さの輪切り)'] || a['トマト（完熟のもの）'] || a['完熟トマト'] || a['トマト(乱切り)'] || a['　・刻んだトマト'] || a['トマト(くし形切り)']
+    if a.include?('トマト')
+      b = a["トマト"]
       if b.include?('1/2缶') || b == "１缶(約200g)" || b == "小１缶(200g)" || b == "小１缶（220g）"
         self.tomato_vw = 100 * 0.131
         self.tomato_fm = 100
@@ -714,8 +717,8 @@ class Meal < ApplicationRecord
         self.tomato_fm = 400
       end
     end
-    if a.include?('　・ミニトマト') || a.include?('ミニトマト') || a.include?('あればサラダ菜、ミニトマト') || a.include?('ミニトマト(1/4に切る)') || a.include?('レモン、ミニトマト') || a.include?('ミニトマト(1/2に切る)') || a.include?('　・ミニトマト(赤・黄)') || a.include?('ミニトマト（赤・黄）') || a.include?('黄ミニトマト')
-      b = a['　・ミニトマト'] || a['ミニトマト'] || a['あればサラダ菜、ミニトマト'] || a['ミニトマト(1/4に切る)'] || a['レモン、ミニトマト'] || a['ミニトマト(1/2に切る)'] || a['　・ミニトマト(赤・黄)'] || a['ミニトマト（赤・黄）'] || a['黄ミニトマト']
+    if a.include?('ミニトマト')
+      b = a['ミニトマト']
       if b.include?('２パック')
         self.tomato_vw = 200 * 0.131
         self.tomato_fm = 200
@@ -745,8 +748,8 @@ class Meal < ApplicationRecord
         self.tomato_fm = b.to_f / 2 * 10
       end
     end
-    if a.include?("きゅうり") || a.include?('　・きゅうり') || a.include?('きゅうりの斜め薄切り') || a.include?('きゅうり(せん切り)') || a.include?('きゅうり(たて1/4)') || a.include?('きゅうりのせん切り') || a.include?('きゅうりのみじん切り') || a.include?('ミニきゅうり（またはきゅうり）') || a.include?('きゅうり(小口切り)') || a.include?('きゅうり(たて半分の斜め薄切り)') || a.include?('きゅうり(縦半分に切って斜め薄切り)') || a.include?('きゅうり(たて1/4で半分の長さ)')
-      b = a["きゅうり"] || a['　・きゅうり'] || a['きゅうりの斜め薄切り'] || a['きゅうり(せん切り)'] || a['きゅうり(たて1/4)'] || a['きゅうりのせん切り'] || a['きゅうりのみじん切り'] || a['ミニきゅうり（またはきゅうり）'] || a['きゅうり(小口切り)'] || a['きゅうり(たて半分の斜め薄切り)'] || a['きゅうり(縦半分に切って斜め薄切り)'] || a['きゅうり(たて1/4で半分の長さ)']
+    if a.include?("きゅうり")
+      b = a["きゅうり"]
       if b.include?('1/3本')
         self.kyuri_vw = 15 * 0.123
         self.kyuri_fm = 15
@@ -1449,12 +1452,12 @@ class Meal < ApplicationRecord
     end
     if a.include?('塩')
       b = a["塩"]
-      if b.include?('')
-        self.sio_vw = b.to_f / 2 * 0.008
-        self.sio_fm = b.to_f / 2
-      elsif b.include?('適宣')
+      if b.include?('適宣')
         self.sio_vw = 5 / 2 * 0.008
         self.sio_fm = 5 / 2
+      else
+        self.sio_vw = b.to_f / 2 * 0.008
+        self.sio_fm = b.to_f / 2
       end
     end
     if a.include?('しょうゆ') || a.include?('　・しょうゆ、酢') || a.include?('　・しょうゆ') || a.include?('　・酒、しょうゆ、砂糖') || a.include?('　・しょうゆ、オイスターソース、酒、酢') || a.include?('　・しょうゆ、みりん') || a.include?('　・酒、しょうゆ') || a.include?('　・しょうゆ、酒、みりん') || a.include?('　・しょうゆ、砂糖') || a.include?('　・しょうゆ、ごま油') || a.include?('　・酢、しょうゆ') || a.include?('　・しょうゆ、酒') || a.include?('　・マヨネーズ、レモン汁、しょうゆ') || a.include?(' ・しょうゆ') || a.include?('うす口しょうゆ(またはしょうゆ)') || a.include?('　・おろししょうが、砂糖、しょうゆ') || a.include?('　・白すりごま、しょうゆ') || a.include?('　・塩、しょうゆ') || a.include?('　・オイスターソース、しょうゆ') || a.include?('　・オリーブ油、しょうゆ') || a.include?('　・ごま油、サラダ油、しょうゆ、酒、水') || a.include?('　・しょうゆ、トマトケチャップ') || a.include?('　・しょうゆ、砂糖、片栗粉') || a.include?('うす口しょうゆ(またはしょうゆ)') || a.include?('　・しょうゆ、砂糖、酒、ごま油、片栗粉') || a.include?('　・しょうゆ、白すりごま') || a.include?('　・砂糖、しょうゆ') || a.include?('　・しょうゆ、みそ') || a.include?('しょうゆ、砂糖') || a.include?('　・粒マスタード、はちみつ、マヨネーズ、しょうゆ') || a.include?('　・白すりごま、しょうゆ') || a.include?('　・豆板醤(トウバンジャン)、しょうゆ、酢') || a.include?('　・しょうゆ、とりガラスープの素') || a.include?('　・しょうゆ、みりん、酒') || a.include?('　・チリソース(またはトマトケチャップ)、しょうゆ') || a.include?('　・はちみつ、しょうゆ') || a.include?('薄口しょうゆ') || a.include?('　・バルサミコ酢、しょうゆ') || a.include?('　・しょうゆ、酢、しょうがのせん切り') || a.include?('　・しょうゆ、オイスターソース') || a.include?('　　・しょうゆ、酢') || a.include?('　・練りわさび、しょうゆ') || a.include?('　・しょうゆ、みりん、砂糖') || a.include?('　・酒、しょうゆ、みりん') || a.include?('　・トマトケチャップ、しょうゆ') || a.include?('うす口しょうゆ(またはしょうゆ小さじ１＋塩少々)') || a.include?('　・しょうゆ、はちみつ') || a.include?('　・うす口しょうゆ') || a.include?('　・酢、しょうゆ、砂糖') || a.include?('　・しょうゆ、塩') || a.include?('　・酢、しょうゆ、砂糖') || a.include?('ナンプラー(またはしょうゆ)') || a.include?('　・砂糖、酒、しょうゆ') || a.include?('　・おろししょうが、しょうゆ、砂糖、酢') || a.include?('　・しょうゆ、黒酢') || a.include?('　・レモン汁、しょうゆ') || a.include?('　　・しょうゆ') || a.include?('　・しょうゆ、ごま油、白すりごま')
@@ -1946,4 +1949,4 @@ class Meal < ApplicationRecord
     self.foodmileage = self.gyu_fm.to_f + self.buta_fm.to_f + self.tori_fm.to_f + self.tamago_fm.to_f + self.kome_fm.to_f + self.gohan_fm.to_f + self.pan_fm.to_f + self.udon_fm.to_f + self.soumen_fm.to_f + self.soba_fm.to_f + self.supagety_fm.to_f + self.ramen_fm.to_f + self.daikon_fm.to_f + self.kabu_fm.to_f + self.ninjin_fm.to_f + self.gobou_fm.to_f + self.renkon_fm.to_f + self.satoimo_fm.to_f + self.yamaimo_fm.to_f + self.hakusai_fm.to_f + self.kyabetsu_fm.to_f + self.hourensou_fm.to_f + self.negi_fm.to_f + self.tamanegi_fm.to_f + self.nasu_fm.to_f + self.tomato_fm.to_f + self.kyuri_fm.to_f + self.kabotya_fm.to_f + self.pyman_fm.to_f + self.endou_fm.to_f + self.edamame_fm.to_f + self.ingen_fm.to_f + self.tomorokoshi_fm.to_f + self.retasu_fm.to_f + self.serori_fm.to_f + self.karifura_fm.to_f + self.buro_fm.to_f + self.jaga_fm.to_f + self.satsumaimo_fm.to_f + self.ninniku_fm.to_f + self.shitake_fm.to_f + self.kuri_fm.to_f + self.daizu_fm.to_f + self.mikan_fm.to_f + self.orange_fm.to_f + self.ringo_fm.to_f + self.budou_fm.to_f + self.kaki_fm.to_f + self.ichigo_fm.to_f + self.touhu_fm.to_f + self.konnyaku_fm.to_f + self.bata_fm.to_f + self.yoogle_fm.to_f + self.cheese_fm.to_f + self.gyunyu_fm.to_f + self.v_fm.to_f + self.sio_fm.to_f + self.syoyu_fm.to_f + self.sake_fm.to_f + self.miso_fm.to_f + self.kecha_fm.to_f + self.kosyo_fm.to_f + self.kary_fm.to_f + self.komugi_fm.to_f + self.satou_fm.to_f + self.su_fm.to_f + self.syokubutsuyu_fm.to_f + self.oliveoil_fm.to_f + self.tya_fm.to_f + self.tea_fm.to_f + self.orangejuce_fm.to_f + self.lemonjuce_fm.to_f
   end
 end
-
+end
