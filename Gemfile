@@ -49,6 +49,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'derailed'
   gem 'bullet'
+  gem 'rack-mini-profiler'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -75,8 +76,6 @@ gem 'grape'
 gem 'mechanize'
 gem 'jquery-turbolinks'
 gem 'compass-rails'
-gem 'chosen-rails'
-gem 'newrelic_rpm'
 group :production do
   gem 'rails_12factor'
   gem 'pg'

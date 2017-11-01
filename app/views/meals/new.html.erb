@@ -1,7 +1,4 @@
 <% cache do %>
-  <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="chosen.jquery.min.js"></script>
-  <link href="chosen.min.css" rel="stylesheet">
   <div id="kakeibo">
     <div id="input_consmonth">
       <table class="input_consmonth1">
@@ -15,7 +12,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, options_for_select(@yasai), {}, {:include_blank => true, :class => "chosen"} %>
+                <%= f.select :cuisine_id, options_for_select(@yasai), {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -27,7 +24,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, @niku, {}, {:include_blank => true, class: "chosen"} %>
+                <%= f.select :cuisine_id, @niku, {}, {:include_blank => true} %>
                <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -39,7 +36,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, @sakana, {}, {:include_blank => true, class: "chosen"} %>
+                <%= f.select :cuisine_id, @sakana, {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -51,7 +48,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, @tamago, {}, {:include_blank => true, class: "chosen"} %>
+                <%= f.select :cuisine_id, @tamago, {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -63,7 +60,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, @soup, {}, {:include_blank => true, class: "chosen"} %>
+                <%= f.select :cuisine_id, @soup, {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -75,7 +72,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, @gohan, {}, {:include_blank => true, class: "chosen"} %>
+                <%= f.select :cuisine_id, @gohan, {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -87,7 +84,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, @pasta, {}, {:include_blank => true, class: "chosen"} %>
+                <%= f.select :cuisine_id, @pasta, {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -99,7 +96,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, @men, {}, {:include_blank => true, class: "chosen"} %>
+                <%= f.select :cuisine_id, @men, {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -111,7 +108,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, @pan, {}, {:include_blank => true, class: "chosen"} %>
+                <%= f.select :cuisine_id, @pan, {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -123,7 +120,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, @kona, {}, {:include_blank => true, class: "chosen"} %>
+                <%= f.select :cuisine_id, @kona, {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -135,7 +132,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, @agemono, {}, {:include_blank => true, class: "chosen"} %>
+                <%= f.select :cuisine_id, @agemono, {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -147,7 +144,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, options_for_select(@nabe), {}, {:include_blank => true, :class => "chosen"} %>
+                <%= f.select :cuisine_id, options_for_select(@nabe), {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -159,7 +156,7 @@
             <td>
               <%= form_for @meal do |f| %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.select :cuisine_id, @kobachi, {}, {:include_blank => true, class: "chosen"} %>
+                <%= f.select :cuisine_id, @kobachi, {}, {:include_blank => true} %>
                 <%= f.submit "登録", class: "btn-syoku" %>
               <% end %>
             </td>
@@ -169,8 +166,4 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-    $(".chosen").chosen();
-    $(".chosen-deselect").chosen({allow_single_deselect:true});
-  </script>
 <% end %>

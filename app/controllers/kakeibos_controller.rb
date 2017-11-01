@@ -22,8 +22,8 @@ class KakeibosController < ApplicationController
     @kakeibo = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC")
     @meal = Meal.where(user_id: current_user.id)
     @denki = @kakeibo.sum(:denki_env)
-    @gas = @kakeibo.sum(:denki_env)
-    @suidou = @kakeibo.sum(:denki_env)
+    @gas = @kakeibo.sum(:gas_env)
+    @suidou = @kakeibo.sum(:suidou_env)
     @month = @kakeibo.last
     @env = @kakeibo.sum(:env_load)
     @meal_vw = @meal.sum(:virtualwater)
