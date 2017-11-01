@@ -79,6 +79,7 @@ gem 'compass-rails'
 group :production do
   gem 'rails_12factor'
   gem 'pg'
+  gem 'rack-mini-profiler'
 end
  group :production, :staging do
   gem 'unicorn'
