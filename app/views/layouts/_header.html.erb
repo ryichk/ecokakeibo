@@ -6,7 +6,7 @@
         <a class="ny1 bt" href="/kakeibos/new">家計簿入力</a>
         <a class="ny2 bt" href="/meals/new">食事入力</a>
         <% if current_user.avatar_file_name.blank? %>
-          <div class="image1"><%= image_tag 'alt.png', :size => "100x100" %></div>
+          <div class="image1"><%= image_tag 'ha.png', :size => "100x100" %></div>
         <% else %>
           <div class="image1" style="background-image: url(<%= current_user.avatar.url(:medium) %>);"></div>
         <% end %>

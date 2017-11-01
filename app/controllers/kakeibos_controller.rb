@@ -17,6 +17,17 @@ class KakeibosController < ApplicationController
     @kakeibo = Kakeibo.new
   end
 
+
+  def create
+    @kakeibo = Kakeibo.new(create_params)
+    if @kakeibo.save
+      redirect_to "/kakeibos/#{current_user.id}/"
+    else
+      render 'new'
+    end
+  end
+
+
   def show
     @user = User.find(params[:id])
     @kakeibo = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC")
@@ -32,15 +43,6 @@ class KakeibosController < ApplicationController
     @fm = @meal.group(:created_at).order('created_at ASC').sum(:foodmileage)
   end
 
-  def create
-    Kakeibo.create(create_params)
-    @kakeibo = Kakeibo.new(create_params)
-    if @kakeibo.save
-      redirect_to "/kakeibos/#{current_user.id}/"
-    else
-      render 'new'
-    end
-  end
 
   def destroy
     kakeibo = Kakeibo.find(params[:id])
