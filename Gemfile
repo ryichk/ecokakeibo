@@ -76,6 +76,7 @@ gem 'mechanize'
 gem 'jquery-turbolinks'
 gem 'compass-rails'
 gem 'chosen-rails'
+gem 'newrelic_rpm'
 group :production do
   gem 'rails_12factor'
   gem 'pg'
