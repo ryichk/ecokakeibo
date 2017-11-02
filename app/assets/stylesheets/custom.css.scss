@@ -439,7 +439,7 @@ header.header {
   border-bottom: 1px solid $gray;
   background-color: #ffffff;
   position: relative;
-  height: 100px;
+  height: 90px;
   z-index: 5;
   div.header__bar.row {
     position: relative;
@@ -479,47 +479,15 @@ header.header {
       background-size: cover;
       background-position: center center;
       border-radius: 3px;
-    }
-    .ny1 {
-      @include basePadding(10px 20px);
-        margin-top: 70px;
-        margin-bottom: -20px;
-        margin-right: 0px;
-        font-size: 24px;
-        border: 2px solid $accent;
-        font-weight: bold;
-        text-align: center;
-        border-radius: 3px;
-        color: green;
-        background-color: #f3ffd8;
-      &:hover {
-        border-color: lighten($accent, 15%);
-        color: lighten($accent, 15%);
-        background-color: white;
-      }
-    }
-    .ny2 {
-      @include basePadding(10px 20px);
-        margin-right: -30px;
-        font-size: 24px;
-        border: 2px solid #FFcc66;
-        font-weight: bold;
-        text-align: center;
-        border-radius: 3px;
-        color: #ff9933;
-        background-color: #fff0f5;
-      &:hover {
-        border-color: lighten($accent, 15%);
-        color: lighten($accent, 15%);
-        background-color: white;
-      }
+      margin-top: -30px;
     }
     span {
-      margin-left: -470px;
-      margin-top: -80px;
+      margin-left: -440px;
+      margin-top: -70px;
       width: 180px;
       font-size: 30px;
       cursor: pointer;
+      padding: 10px;
       position: fixed;
       &:after {
         content: '▼';
@@ -551,6 +519,69 @@ header.header {
   }
 }
 
+@media (max-width: 767px) {
+
+/* トグルボタン */
+#menubtn {
+  width: 80px;
+  height: 40px;
+  padding: 6px 12px;
+  border: solid 1px #aaaaaa;
+  border-radius: 5px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  cursor: pointer;
+}
+
+#menubtn:hover {
+  background-color: #dddddd;
+}
+
+#menubtn:focus {
+  outline: none;
+}
+
+#munebtn i {
+  color: #888888;
+  font-size: 18px;
+}
+
+#menubtn span {
+  display: inline-block;
+  text-indent: -9999px;
+}
+
+/* ナビゲーションメニュー（縦並び） */
+.menu {
+  display: none;
+}
+
+.menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.menu li a {
+  display: block;
+  padding: 5px;
+  color: #000000;
+  font-size: 14px;
+  text-decoration: none;
+}
+.menu li a:hover {background-color: #eeeeee;
+}
+.menu ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.menu li {
+  float: left;
+  width: auto;
+}
+}
 
 /* profile */
 

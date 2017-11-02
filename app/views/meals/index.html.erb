@@ -10,7 +10,7 @@
     <% @meals.each do |meal| %>
       <% Cuisine.where(id: meal.cuisine_id).each do |i| %>
         <li><%= i.name %><br>⭐️
-        <%= i.calorie %>カロリー
+        <%= i.calorie %>キロカロリー
       <% end %>
           <%= link_to '削除', "/meals/#{meal.id}", method: :delete %>
           </li>
