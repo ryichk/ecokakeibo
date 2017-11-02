@@ -39,8 +39,8 @@ class KakeibosController < ApplicationController
     @env = @kakeibo.sum(:env_load)
     @meal_vw = @meal.sum(:virtualwater)
     @meal_fm = @meal.sum(:foodmileage)
-    @vw = @meal.group(:created_at).sum(:virtualwater)
-    @fm = @meal.group(:created_at).order('created_at ASC').sum(:foodmileage)
+    @vw = @meal.select("date(created_at) as ordered_date, sum(virtualwater) as total_virtualwater").group("date(created_at)").sum(:virtualwater)
+    @fm = @meal.select("date(created_at) as ordered_date, sum(foodmileage) as total_foodmileage").group("date(created_at)").sum(:foodmileage)
   end
 
 
