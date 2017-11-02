@@ -509,6 +509,7 @@ header.header {
       box-shadow: 1px 2px 5px rgba(0,0,0,0.1);
       li {
         background-color: #f0f0f0;
+        padding: 5px;
         a {
           display: block;
           text-align: left;
@@ -519,12 +520,11 @@ header.header {
   }
 }
 
-@media (max-width: 767px) {
 
 /* トグルボタン */
 #menubtn {
-  width: 80px;
-  height: 40px;
+  width: 90px;
+  height: 50px;
   padding: 6px 12px;
   border: solid 1px #aaaaaa;
   border-radius: 5px;
@@ -533,55 +533,35 @@ header.header {
   top: 30px;
   right: 15px;
   cursor: pointer;
+  &:hover {
+    background-color: #dddddd;
+  }
+  &:hover ul {
+    display: block;
+    outline: none;
+  }
+  ul {
+    display: none;
+    position: relative;
+    top: 10px;
+    right: 0;
+    border-left: 1px solid #d8d8d8;
+    border-right: 1px solid #d8d8d8;
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.1);
+    li {
+      background-color: #f0f0f0;
+      width: 150px;
+      margin-left: -70px;
+      padding: 5px;
+      a {
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid #d8d8d8;
+      }
+    }
+  }
 }
 
-#menubtn:hover {
-  background-color: #dddddd;
-}
-
-#menubtn:focus {
-  outline: none;
-}
-
-#munebtn i {
-  color: #888888;
-  font-size: 18px;
-}
-
-#menubtn span {
-  display: inline-block;
-  text-indent: -9999px;
-}
-
-/* ナビゲーションメニュー（縦並び） */
-.menu {
-  display: none;
-}
-
-.menu ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.menu li a {
-  display: block;
-  padding: 5px;
-  color: #000000;
-  font-size: 14px;
-  text-decoration: none;
-}
-.menu li a:hover {background-color: #eeeeee;
-}
-.menu ul:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.menu li {
-  float: left;
-  width: auto;
-}
-}
 
 /* profile */
 

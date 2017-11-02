@@ -1,13 +1,3 @@
-
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script>
-$(function(){
-  $("#menubtn").click(function(){
-    $("#menu").slideToggle();
-  });
-});
-</script>
 <div class="navbar navbar-inverse navbar-fixed-top">
 <header class="header">
   <div class="header__bar row">
@@ -25,16 +15,18 @@ $(function(){
               <li><%= link_to "設定", edit_user_path(current_user), class: "btn" %></li>
             </ul>
           </span>
-          <button type="button" id="menubtn">
-            <i class="fa fa-bars"></i><span>MENU</span>
-          </button>
-          <nav class="menu" id="menu">
-            <ul class="user__info">
-              <li><a class="btn" href="/kakeibos/new">家計簿入力</a></li>
-              <li><a class="btn" href="/meals/new">食事入力</a></li>
-            </ul>
-          </nav>
       </div>
+      <button type="button" id="menubtn">
+        <i class="fa fa-bars"></i><span>MENU</span>
+          <ul>
+            <li><%= link_to "ホーム", users_path, class: "btn" %></li>
+            <li><a class="btn" href="/kakeibos/new">家計簿入力</a></li>
+            <li><a class="btn" href="/meals/new">食事入力</a></li>
+            <li><%= link_to "環境負荷", kakeibo_path(current_user.id), class: "btn" %></li>
+            <li><%= link_to "食事記録", meals_path, class: "btn" %></li>
+            <li><%= link_to "家計簿", kakeibos_path, class: "btn" %></li>
+          </ul>
+      </button>
     <% else %>
       <div class="grid-6">
         <%= link_to "ログイン", login_path, class: "post" %>
