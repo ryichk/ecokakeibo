@@ -10,9 +10,13 @@
         <% end %>
           <span><%= current_user.name %>
             <ul class="user__info">
-              <li><a href="/users/<%= current_user.id %>", class="btn">マイページ</a></li>
               <li><%= link_to "ログアウト", logout_path, method: "delete", class: "btn" %></li>
               <li><%= link_to "設定の変更", edit_user_path(current_user), class: "btn" %></li>
+              <li><% if current_user.admin? && !current_user?(user) %>
+                | <%= link_to 'アカウント削除', user, method: :delete,
+                 data: { confirm: "本当にいいですか？" }, class: "btn" %>
+              <% end %>
+              </li>
             </ul>
           </span>
       </div>
@@ -21,9 +25,9 @@
           <ul>
             <li><%= link_to "ホーム", users_path, class: "btn" %></li>
             <li><%= link_to "環境負荷", kakeibo_path(current_user.id), class: "btn" %></li>
-            <li><a class="btn" href="/kakeibos/new">家計簿入力</a></li>
+            <li><a class="btn" href="/kakeibos/new">光熱水入力</a></li>
             <li><a class="btn" href="/meals/new">食事入力</a></li>
-            <li><%= link_to "食事記録", meals_path, class: "btn" %></li>
+            <li><%= link_to "カロリー手帳", meals_path, class: "btn" %></li>
             <li><%= link_to "家計簿", kakeibos_path, class: "btn" %></li>
           </ul>
       </button>
