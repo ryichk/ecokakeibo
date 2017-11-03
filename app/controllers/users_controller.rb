@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   def index
     @id = Kakeibo.group(:user_id).sum(:env_load).keys
     @setai = User.where(id: @id).select(:setai)
-    
     co2_ids = Kakeibo.group(:user_id).order('sum_env_load ASC').sum(:env_load).keys
     @ranking1 = co2_ids.map { |id| User.find(id) }
     vw_ids = Meal.includes(:user).group(:user_id).order('sum_virtualwater ASC').sum(:virtualwater).keys
