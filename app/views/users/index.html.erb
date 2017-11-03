@@ -7,7 +7,7 @@
     <i class="icon-crown"></i>CO2排出量<%= image_tag 'co2.jpeg', :size => "80x80" %>
   </h2>
   <ul class="ranking">
-    <% @ranking1.sort.each.with_index(1) do |user, i|  %>
+    <% @ranking1.each.with_index(1) do |user, i|  %>
       <li>
         <% if i == 1 || i == 2 || i = 3 %>
           <%= image_tag 'ha.png', :size => "40x40", :class => "ha" %><%= i %>位
@@ -45,9 +45,10 @@
           <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
         <% end %>
         <h3 class="rank">
-          <%= user.name %>
+          <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
+          <%= user.name %>　<%= ((Meal.where(user_id: user.id).sum(:virtualwater)) / Cuisine.where(id: meal).sum(:calorie)).round(2) %>L/kcal
         </h3>
-      </li>
+      </li><%= Cuisine.where(id: meal).sum(:calorie) %>
     <% end %>
   </ul>
 </div>
@@ -59,7 +60,7 @@
   <ul class="ranking">
     <% @ranking3.each.with_index(1) do |user, i|  %>
       <li>
-        <% if i == 1 %>
+        <% if i == 1 || i == 2 || i == 3 %>
           <%= image_tag 'ha.png', :size => "40x40", :class => "ha" %><%= i %>位
         <% else %>
           <%= i %>位

@@ -1,4 +1,5 @@
 class MealsController < ApplicationController
+
   before_action :logged_in_user, only: [:index, :new, :create, :destroy]
   def index
     @meals = Meal.where(user_id: current_user.id).order('created_at')
@@ -6,7 +7,6 @@ class MealsController < ApplicationController
 
   def new
     @meal = Meal.new
-    @cuisines = Cuisine.where('name LIKE(?)', "%#{params[:keyword]}%").limit(20)
     @yasai = Cuisine.where("genre = '野菜'").select("id,name").map{|f| [f.name, f.id]}
     @niku = Cuisine.where("genre = '肉のおかず'").select("id,name").map{|f| [f.name, f.id]}
     @sakana = Cuisine.where("genre = '魚介のおかず'").select("id,name").map{|f| [f.name, f.id]}
