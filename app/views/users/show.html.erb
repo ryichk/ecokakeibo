@@ -65,7 +65,7 @@
 <hr>
 <div class="contents">
   <h1><%= image_tag 'vw.jpeg', :size => "50x50" %> 今月のバーチャルウォーター量</h1>
-  <div class="vw"><h1><%= @meal_vw %> L</h1></div>
+  <div class="vw"><h1><%= @meal_vw.round.floor.to_s(:delimited) %> L</h1></div>
   <div class="graph">
     <h3 id="env">　毎日のバーチャルウォーター量推移（L）</h3>
       <%= column_chart @vw, height: "500px", width: "450px", colors: ["66FFFF"] %>
