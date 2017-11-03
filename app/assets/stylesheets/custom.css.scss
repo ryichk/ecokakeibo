@@ -97,31 +97,6 @@ p {
 
 
 
-/*footer*/
-
-footer {
-  margin-top: 40px;
-  padding-top: 5px;
-  border-top: 1px solid green;
-  background-color: $accent;
-}
-
-footer a {
-  font-size: 20px;
-}
-
-footer a:hover {
-  color: #222;
-}
-
-
-footer ul li {
-  float: left;
-  margin-left: 15px;
-}
-
-
-
 /*sidebar*/
 
 aside {
@@ -437,7 +412,7 @@ text {
 header.header {
   @include basePadding;
   border-bottom: 1px solid $gray;
-  background-color: #ffffff;
+  background-color: #fffff0;
   position: relative;
   height: 90px;
   z-index: 5;

@@ -50,7 +50,6 @@ class User < ApplicationRecord
     update_attribute(:activated_at, Time.zone.now)
   end
 
- 
   #パスワード再設定の属性を設定する
   def create_reset_digest
     self.reset_token = User.new_token
