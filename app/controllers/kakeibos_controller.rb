@@ -21,7 +21,7 @@ class KakeibosController < ApplicationController
   def create
     @kakeibo = Kakeibo.new(create_params)
     if @kakeibo.save
-      redirect_to "/kakeibos/#{current_user.id}/"
+      redirect_to "/users/#{current_user.id}/"
     else
       render 'new'
     end

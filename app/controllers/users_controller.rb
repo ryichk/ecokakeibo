@@ -5,13 +5,15 @@ class UsersController < ApplicationController
 
 
   def index
-    co2_ids = Kakeibo.includes(:user).group(:user_id).order('sum_env_load ASC').sum(:env_load).keys
+    @id = Kakeibo.group(:user_id).sum(:env_load).keys
+    @setai = User.where(id: @id).select(:setai)
+    @env = Kakeibo.
+    co2_ids = Kakeibo.group(:user_id).order('sum_env_load ASC').sum(:env_load).keys
     @ranking1 = co2_ids.map { |id| User.find(id) }
     vw_ids = Meal.includes(:user).group(:user_id).order('sum_virtualwater ASC').sum(:virtualwater).keys
     @ranking2 = vw_ids.map { |id| User.find(id) }
     fm_ids = Meal.includes(:user).group(:user_id).order('sum_foodmileage ASC').sum(:foodmileage).keys
     @ranking3 = fm_ids.map { |id| User.find(id) }
-    @setai = User.find(current_user.id)
   end
 
   def new
@@ -39,8 +41,8 @@ class UsersController < ApplicationController
     @suidou = @kakeibo.sum(:suidou_env)
     @month = @kakeibo.last
     @env = @kakeibo.sum(:env_load)
-    @meal_vw = @meal.sum(:virtualwater)
-    @meal_fm = @meal.sum(:foodmileage)
+    @meal_vw = @meal.select("month(created_at) as ordered_month, sum(virtualwater) as total_virtualwater").group("month(created_at)").sum(:virtualwater).values[0]
+    @meal_fm = @meal.select("month(created_at) as ordered_month, sum(foodmileage) as total_foodmileage").group("month(created_at)").sum(:foodmileage).values[0]
     @vw = @meal.select("date(created_at) as ordered_date, sum(virtualwater) as total_virtualwater").group("date(created_at)").sum(:virtualwater)
     @fm = @meal.select("date(created_at) as ordered_date, sum(foodmileage) as total_foodmileage").group("date(created_at)").sum(:foodmileage)
   end
@@ -64,7 +66,7 @@ class UsersController < ApplicationController
   end
 
   def admin_user
-    redirect_to 'kakeibos#new' unless current_user.admin?
+    redirect_to '/kakeibos/new' unless current_user.admin?
   end
 
 

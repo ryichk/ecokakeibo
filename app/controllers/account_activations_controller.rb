@@ -9,7 +9,7 @@ class AccountActivationsController < ApplicationController
       redirect_to user
     else
       flash[:danger] = "有効化するリンクが無効です。"
-      redirect_to root_url
+      redirect_to 'kakeibos/new'
     end
   end
 end

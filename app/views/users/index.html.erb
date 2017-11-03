@@ -7,9 +7,9 @@
     <i class="icon-crown"></i>CO2排出量<%= image_tag 'co2.jpeg', :size => "80x80" %>
   </h2>
   <ul class="ranking">
-    <% @ranking1.each.with_index(1) do |user, i|  %>
+    <% @ranking1.sort.each.with_index(1) do |user, i|  %>
       <li>
-        <% if i == 1 %>
+        <% if i == 1 || i == 2 || i = 3 %>
           <%= image_tag 'ha.png', :size => "40x40", :class => "ha" %><%= i %>位
         <% else %>
           <%= i %>位
@@ -20,9 +20,9 @@
           <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
         <% end %>
         <h3 class="rank">
-          <%= user.name %>
+          <%= user.name %>　<%= (Kakeibo.where(user_id: user.id).sum(:env_load).round(2)) / user.setai / (Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count) %>kg/人/月<%= Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count %>
         </h3>
-      </li>
+      </li><%= @env %>
     <% end %>
   </ul>
 </div>
@@ -34,7 +34,7 @@
   <ul class="ranking">
     <% @ranking2.each.with_index(1) do |user, i|  %>
       <li>
-        <% if i == 1 %>
+        <% if i == 1 || i == 2 || i == 3 %>
           <%= image_tag 'ha.png', :size => "40x40", :class => "ha" %><%= i %>位
         <% else %>
           <%= i %>位
