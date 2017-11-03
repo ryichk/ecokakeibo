@@ -20,9 +20,9 @@
           <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
         <% end %>
         <h3 class="rank">
-          <%= user.name %>　<%= (Kakeibo.where(user_id: user.id).sum(:env_load).round(2)) / user.setai / (Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count) %>kg/人/月<%= Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count %>
+          <%= user.name %>　<%= (Kakeibo.where(user_id: user.id).sum(:env_load).round(2)) / user.setai / (Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count) %>kg/人/月
         </h3>
-      </li><%= @env %>
+      </li>
     <% end %>
   </ul>
 </div>
