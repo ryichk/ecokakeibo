@@ -23,12 +23,12 @@
       <button type="button" id="menubtn">
         <i class="fa fa-bars"></i><span>MENU</span>
           <ul>
+            <li><%= link_to "🏠 環境負荷", kakeibo_path(current_user.id), class: "btn" %></li>
             <li><%= link_to "ランキング", users_path, class: "btn" %></li>
-            <li><%= link_to "環境負荷", kakeibo_path(current_user.id), class: "btn" %></li>
+            <li><%= link_to "家計簿", kakeibos_path, class: "btn" %></li>
+            <li><%= link_to "カロリー手帳", meals_path, class: "btn" %></li>
             <li><a class="btn" href="/kakeibos/new">光熱水入力</a></li>
             <li><a class="btn" href="/meals/new">食事入力</a></li>
-            <li><%= link_to "カロリー手帳", meals_path, class: "btn" %></li>
-            <li><%= link_to "家計簿", kakeibos_path, class: "btn" %></li>
           </ul>
       </button>
     <% else %>
