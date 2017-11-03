@@ -9,9 +9,13 @@
   <ul class="ranking">
     <% @ranking1.each.with_index(1) do |user, i|  %>
       <li>
-        <%= i %>位
+        <% if i == 1 %>
+          <%= image_tag 'ha.png', :size => "40x40", :class => "ha" %><%= i %>位
+        <% else %>
+          <%= i %>位
+        <% end %>
         <% if user.avatar_file_name.blank? %>
-          <div class="image2"><%= image_tag 'ha.png', :size => "100x100" %></div>
+          <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
         <% else %>
           <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
         <% end %>
@@ -30,9 +34,13 @@
   <ul class="ranking">
     <% @ranking2.each.with_index(1) do |user, i|  %>
       <li>
-        <%= i %>位
+        <% if i == 1 %>
+          <%= image_tag 'ha.png', :size => "40x40", :class => "ha" %><%= i %>位
+        <% else %>
+          <%= i %>位
+        <% end %>
         <% if user.avatar_file_name.blank? %>
-          <div class="image2"><%= image_tag 'ha.png', :size => "100x100" %></div>
+          <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
         <% else %>
           <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
         <% end %>
@@ -51,9 +59,13 @@
   <ul class="ranking">
     <% @ranking3.each.with_index(1) do |user, i|  %>
       <li>
-        <%= i %>位
+        <% if i == 1 %>
+          <%= image_tag 'ha.png', :size => "40x40", :class => "ha" %><%= i %>位
+        <% else %>
+          <%= i %>位
+        <% end %>
         <% if user.avatar_file_name.blank? %>
-          <div class="image2"><%= image_tag 'ha.png', :size => "100x100" %></div>
+          <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
         <% else %>
           <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
         <% end %>

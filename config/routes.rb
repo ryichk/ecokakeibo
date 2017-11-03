@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  root 'kakeibos#new'
+  root 'users#show'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

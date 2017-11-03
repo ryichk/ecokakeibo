@@ -28,20 +28,6 @@ class KakeibosController < ApplicationController
   end
 
 
-  def show
-    @user = User.find(params[:id])
-    @kakeibo = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC")
-    @meal = Meal.where(user_id: current_user.id)
-    @denki = @kakeibo.sum(:denki_env)
-    @gas = @kakeibo.sum(:gas_env)
-    @suidou = @kakeibo.sum(:suidou_env)
-    @month = @kakeibo.last
-    @env = @kakeibo.sum(:env_load)
-    @meal_vw = @meal.sum(:virtualwater)
-    @meal_fm = @meal.sum(:foodmileage)
-    @vw = @meal.select("date(created_at) as ordered_date, sum(virtualwater) as total_virtualwater").group("date(created_at)").sum(:virtualwater)
-    @fm = @meal.select("date(created_at) as ordered_date, sum(foodmileage) as total_foodmileage").group("date(created_at)").sum(:foodmileage)
-  end
 
 
   def destroy
@@ -58,7 +44,7 @@ class KakeibosController < ApplicationController
 
       def kakeibo_in
         unless env.present?
-          redirect_to root_url, alert: "家計簿を入力してください。"
+          redirect_to 'kakeibos/new', alert: "家計簿を入力してください。"
         end
       end
 

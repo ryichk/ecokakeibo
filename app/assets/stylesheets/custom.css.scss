@@ -94,6 +94,14 @@ p {
 }
 
 
+.login {
+  font-size: 30px;
+  margin-bottom: -10px;
+}
+
+.con {
+  margin: 50px;
+}
 
 
 
@@ -341,6 +349,7 @@ h3#gasorin {
   bottom: -50px;
   z-index: 2;
 }
+
 
 .graph {
   border: 1px solid #ccc;
@@ -676,6 +685,11 @@ h1.ribbon {
       margin-top: -50px;
     }
   }
+}
+
+img.ha {
+  padding-right: 5px;
+  margin-left: -40px;
 }
 
 /* syokujidata */

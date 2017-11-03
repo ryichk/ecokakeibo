@@ -1,4 +1,5 @@
 class MealsController < ApplicationController
+  before_action :logged_in_user, only: [:index, :new, :create, :destroy]
   def index
     @meals = Meal.where(user_id: current_user.id).order('created_at')
   end

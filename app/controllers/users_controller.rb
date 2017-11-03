@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
 
@@ -18,19 +18,31 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
 
   def create
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      redirect_to root_url
+      redirect_to 'kakeibos#new'
     else
       render 'new'
     end
+  end
+
+
+  def show
+    @user = User.find(params[:id])
+    @kakeibo = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC")
+    @meal = Meal.where(user_id: current_user.id)
+    @denki = @kakeibo.sum(:denki_env)
+    @gas = @kakeibo.sum(:gas_env)
+    @suidou = @kakeibo.sum(:suidou_env)
+    @month = @kakeibo.last
+    @env = @kakeibo.sum(:env_load)
+    @meal_vw = @meal.sum(:virtualwater)
+    @meal_fm = @meal.sum(:foodmileage)
+    @vw = @meal.select("date(created_at) as ordered_date, sum(virtualwater) as total_virtualwater").group("date(created_at)").sum(:virtualwater)
+    @fm = @meal.select("date(created_at) as ordered_date, sum(foodmileage) as total_foodmileage").group("date(created_at)").sum(:foodmileage)
   end
 
   def edit
@@ -52,14 +64,14 @@ class UsersController < ApplicationController
   end
 
   def admin_user
-    redirect_to(root_url) unless current_user.admin?
+    redirect_to 'kakeibos#new' unless current_user.admin?
   end
 
 
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :setai, :avatar)
+      params.require(:user).permit(:name, :password, :password_confirmation, :setai, :avatar)
     end
 
     # beforeフィルター
@@ -77,6 +89,6 @@ class UsersController < ApplicationController
     #正しいユーザーかどうか確認
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to 'kakeibos#new' unless current_user?(@user)
     end
 end

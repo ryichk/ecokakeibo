@@ -4,7 +4,7 @@
     <% if logged_in? %>
       <div class="user_nav grid-6">
         <% if current_user.avatar_file_name.blank? %>
-          <div class="image1"><%= image_tag 'ha.png', :size => "100x100" %></div>
+          <div class="image1"><%= image_tag 'alt.png', :size => "100x100" %></div>
         <% else %>
           <div class="image1" style="background-image: url(<%= current_user.avatar.url(:medium) %>);"></div>
         <% end %>
@@ -23,7 +23,7 @@
       <button type="button" id="menubtn">
         <i class="fa fa-bars"></i><span>MENU</span>
           <ul>
-            <li><%= link_to "🏠 環境負荷", kakeibo_path(current_user.id), class: "btn" %></li>
+            <li><%= link_to "環境負荷 🏠", user_path(current_user.id), class: "btn" %></li>
             <li><%= link_to "ランキング", users_path, class: "btn" %></li>
             <li><%= link_to "家計簿", kakeibos_path, class: "btn" %></li>
             <li><%= link_to "カロリー手帳", meals_path, class: "btn" %></li>
@@ -33,8 +33,7 @@
       </button>
     <% else %>
       <div class="grid-6">
-        <%= link_to "ログイン", login_path, class: "post" %>
-        <%= link_to "新規登録", signup_path, class: "post" %>
+        <span class="login">初めての方は 👉</span><%= link_to "新規登録", signup_path, class: "post" %>
       </div>
     <% end %>
   </div>
