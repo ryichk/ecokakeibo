@@ -12,7 +12,6 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: ["image/jpg","image/jpeg","image/png"]
 
   has_many :kakeibos, dependent: :destroy
-  has_many :envs, through: :kakeibos
   has_many :meals
 
   #与えられた文字列のハッシュ値を返す

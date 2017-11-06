@@ -1,4 +1,3 @@
-
 <div class="ribbon-wrap">
   <h1 class="ribbon">ランキング</h1>
 </div>
@@ -7,9 +6,9 @@
     <i class="icon-crown"></i>CO<sub>2 </sub>排出量<%= image_tag 'co2.jpeg', :size => "80x80" %>
   </h2>
   <ul class="ranking">
-    <% @ranking1.each.with_index(1) do |user, i|  %>
+    <% @ranking1.each.with_index(1) do |user, i| %>
       <li>
-        <% if i == 1 || i == 2 || i = 3 %>
+        <% if i == 1 || i == 2 || i == 3 %>
           <%= image_tag 'ha.png', :size => "40x40", :class => "ha" %><%= i %>位
         <% else %>
           <%= i %>位
@@ -20,7 +19,7 @@
           <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
         <% end %>
         <h3 class="rank">
-          <%= user.name %>　<%= ((Kakeibo.where(user_id: user.id).sum(:env_load)) / user.setai / (Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count)).round(2) %> kg<sub> /人/月</sub>
+          <%= user.name %>　<%= ((Kakeibo.where(user_id: user.id).sum(:env_load)) / user.setai / (Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count)).round(2) %> kg<sub>/人/月</sub>
         </h3>
       </li>
     <% end %>
@@ -46,9 +45,9 @@
         <% end %>
         <h3 class="rank">
           <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
-          <%= user.name %>　<%= ((Meal.where(user_id: user.id).sum(:virtualwater)) / Cuisine.where(id: meal).sum(:calorie)).round(2) %>L/kcal
+          <%= user.name %>　<%= ((Meal.where(user_id: user.id).sum(:virtualwater)) / Cuisine.where(id: meal).sum(:calorie)).round(2) %> L<sub>/kcal</sub>
         </h3>
-      </li><%= Cuisine.where(id: meal).sum(:calorie) %>
+      </li>
     <% end %>
   </ul>
 </div>
@@ -71,7 +70,8 @@
           <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
         <% end %>
         <h3 class="rank">
-          <%= user.name %>
+          <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
+          <%= user.name %>　<%= ((Meal.where(user_id: user.id).sum(:foodmileage)) / Cuisine.where(id: meal).sum(:calorie)).round(2) %> g<sub>/kcal</sub>
         </h3>
       </li>
     <% end %>

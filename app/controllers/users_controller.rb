@@ -5,14 +5,30 @@ class UsersController < ApplicationController
 
 
   def index
-    @id = Kakeibo.group(:user_id).sum(:env_load).keys
-    @setai = User.where(id: @id).select(:setai)
-    co2_ids = Kakeibo.group(:user_id).order('sum_env_load ASC').sum(:env_load).keys
-    @ranking1 = co2_ids.map { |id| User.find(id) }
-    vw_ids = Meal.includes(:user).group(:user_id).order('sum_virtualwater ASC').sum(:virtualwater).keys
-    @ranking2 = vw_ids.map { |id| User.find(id) }
-    fm_ids = Meal.includes(:user).group(:user_id).order('sum_foodmileage ASC').sum(:foodmileage).keys
-    @ranking3 = fm_ids.map { |id| User.find(id) }
+    user = Kakeibo.group(:user_id).sum(:env_load).keys
+    load = user.map { |id| Kakeibo.where(user_id: id).sum(:env_load) / User.find(id).setai / Kakeibo.where(user_id: id).group(:month).sum(:env_load).count }
+    users = [user, load].transpose
+    users = Hash[users]
+    users = users.sort_by { |k, v| v }
+    users = Hash[users]
+    users = users.keys
+    @ranking1 = users.map { |id| User.find(id) }
+    users = Meal.group(:user_id).sum(:virtualwater).keys
+    vw_ids = users.map { |id| (Meal.where(user_id: id).sum(:virtualwater)) / Cuisine.where(id: Meal.where(user_id: id).select(:cuisine_id)).sum(:calorie) }
+    users = [users, vw_ids].transpose
+    users = Hash[users]
+    user = users.sort_by { |k,v| v }
+    users = Hash[user]
+    users = users.keys
+    @ranking2 = users.map { |id| User.find(id) }
+    users = Meal.group(:user_id).sum(:foodmileage).keys
+    vw_ids = users.map { |id| (Meal.where(user_id: id).sum(:foodmileage)) / Cuisine.where(id: Meal.where(user_id: id).select(:cuisine_id)).sum(:calorie) }
+    users = [users, vw_ids].transpose
+    users = Hash[users]
+    user = users.sort_by { |k,v| v }
+    users = Hash[user]
+    users = users.keys
+    @ranking3 = users.map { |id| User.find(id) }
   end
 
   def new

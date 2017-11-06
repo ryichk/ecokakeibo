@@ -57,7 +57,7 @@
     </tbody>
   </table>
   <div class="graph">
-    <h3 id="env">　月別CO2排出量の推移（kg）</h3>
+    <h3 id="env">　月別 CO<sub>2 </sub>排出量の推移（kg）</h3>
       <%= column_chart @env, height: "500px", width: "450px", colors: ["dcc2ff"] %>
   </div>
 </div>
@@ -67,7 +67,7 @@
   <h1><%= image_tag 'vw.jpeg', :size => "50x50" %> 今月のバーチャルウォーター量</h1>
   <div class="vw"><h1><%= @meal_vw.round.floor.to_s(:delimited) %> L</h1></div>
   <div class="graph">
-    <h3 id="env">　バーチャルウォーター量推移（L）</h3>
+    <h3 id="env">　日別 バーチャルウォーター量推移（L）</h3>
       <%= column_chart @vw, height: "500px", width: "450px", colors: ["66FFFF"] %>
   </div>
 </div>
@@ -76,7 +76,7 @@
   <h1>今月のフードマイレージ CO<sub>2 </sub>排出量</h1>
   <div class="fm"><h1><%= @meal_fm.round.floor.to_s(:delimited) %> g</h1></div>
   <div class="graph">
-    <h3 id="env">　フードマイレージ CO<sub>2 </sub>排出量推移（g）</h3>
+    <h3 id="env">　日別 フードマイレージ CO<sub>2 </sub>排出量推移（g）</h3>
       <%= column_chart @fm, height: "500px", width: "450px", colors: ["ccCC66"] %>
   </div>
 </div>
