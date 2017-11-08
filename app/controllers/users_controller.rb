@@ -98,7 +98,7 @@ class UsersController < ApplicationController
       unless logged_in?
         store_location
         flash[:danger] = "ログインしてください。"
-        redirect_to signup_url
+        redirect_to login_url
       end
     end
 

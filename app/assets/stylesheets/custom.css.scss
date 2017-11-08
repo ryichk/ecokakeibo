@@ -87,6 +87,11 @@ h4 {
   margin-bottom: -40px;
 }
 
+h5 {
+  font-size: 15px;
+  margin: 5px;
+}
+
 p {
   font-size: 1.1em;
   line-height: 2.3em;
@@ -665,12 +670,11 @@ h1.ribbon {
   list-style-type: none;
   li{
     position: relative;
-    margin: 10;
-    margin-top: 15px;
+    margin-top: 30px;
     margin-left: 30px;
     padding: 0 0 0 50px;
     border-bottom: 1px dotted #ccc;
-    height: 55px;
+    height: 80px;
     font-size: 27px;
     .image2 {
       width: 60px;
@@ -738,6 +742,7 @@ img.ha {
     padding: 10px;
   }
 }
+
 
 
 /* envload */

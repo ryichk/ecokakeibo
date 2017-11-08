@@ -8,18 +8,15 @@
   <ul class="ranking">
     <% @ranking1.each.with_index(1) do |user, i| %>
       <li>
-        <% if i == 1 || i == 2 || i == 3 %>
-          <%= image_tag 'ha.png', :size => "40x40", :class => "ha" %><%= i %>位
-        <% else %>
-          <%= i %>位
-        <% end %>
+        <%= i %>位
         <% if user.avatar_file_name.blank? %>
           <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
         <% else %>
           <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
         <% end %>
         <h3 class="rank">
-          <%= user.name %>　<%= ((Kakeibo.where(user_id: user.id).sum(:env_load)) / user.setai / (Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count)).round(2) %> kg<sub>/人/月</sub>
+          <%= user.name %><br>
+          <%= ((Kakeibo.where(user_id: user.id).sum(:env_load)) / user.setai / (Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count)).round(2) %> kg<sub>/人/月</sub>
         </h3>
       </li>
     <% end %>
@@ -33,11 +30,7 @@
   <ul class="ranking">
     <% @ranking2.each.with_index(1) do |user, i|  %>
       <li>
-        <% if i == 1 || i == 2 || i == 3 %>
-          <%= image_tag 'ha.png', :size => "40x40", :class => "ha" %><%= i %>位
-        <% else %>
-          <%= i %>位
-        <% end %>
+        <%= i %>位
         <% if user.avatar_file_name.blank? %>
           <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
         <% else %>
@@ -45,7 +38,8 @@
         <% end %>
         <h3 class="rank">
           <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
-          <%= user.name %>　<%= ((Meal.where(user_id: user.id).sum(:virtualwater)) / Cuisine.where(id: meal).sum(:calorie)).round(2) %> L<sub>/kcal</sub>
+          <%= user.name %><br>
+          <%= ((Meal.where(user_id: user.id).sum(:virtualwater)) / Cuisine.where(id: meal).sum(:calorie)).round(2) %> L<sub>/kcal</sub>
         </h3>
       </li>
     <% end %>
@@ -59,11 +53,7 @@
   <ul class="ranking">
     <% @ranking3.each.with_index(1) do |user, i|  %>
       <li>
-        <% if i == 1 || i == 2 || i == 3 %>
-          <%= image_tag 'ha.png', :size => "40x40", :class => "ha" %><%= i %>位
-        <% else %>
-          <%= i %>位
-        <% end %>
+        <%= i %>位
         <% if user.avatar_file_name.blank? %>
           <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
         <% else %>
@@ -71,7 +61,8 @@
         <% end %>
         <h3 class="rank">
           <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
-          <%= user.name %>　<%= ((Meal.where(user_id: user.id).sum(:foodmileage)) / Cuisine.where(id: meal).sum(:calorie)).round(2) %> g<sub>/kcal</sub>
+          <%= user.name %><br>
+          <%= ((Meal.where(user_id: user.id).sum(:foodmileage)) / Cuisine.where(id: meal).sum(:calorie)).round(2) %> g<sub>/kcal</sub>
         </h3>
       </li>
     <% end %>

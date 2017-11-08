@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: ["image/jpg","image/jpeg","image/png"]
 
   has_many :kakeibos, dependent: :destroy
-  has_many :meals
+  has_many :meals, dependent: :destroy
 
   #与えられた文字列のハッシュ値を返す
   def User.digest(string)

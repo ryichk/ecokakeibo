@@ -1,4 +1,4 @@
-<h2>カロリー手帳</h2>
+<h2>食事記録</h2>
 <div class="techo">
   <ul class="date">
     <% @meals.each do |m| %>
@@ -9,8 +9,10 @@
   <ul class="cuisine">
     <% @meals.each do |meal| %>
       <% Cuisine.where(id: meal.cuisine_id).each do |i| %>
-        <li><%= i.name %><br>⭐️
-        <%= i.calorie %> kcal
+        <li><%= i.name %> ⭐️
+        <%= i.calorie %> kcal <br>
+        <sub>バーチャルウォータ <%= meal.virtualwater %> L </sub><br>
+        <sub>フードマイレージ 　<%= meal.foodmileage %>g　</sub>
       <% end %>
           <%= link_to '削除', "/meals/#{meal.id}", method: :delete %>
           </li>
