@@ -7,6 +7,7 @@
   </h2>
   <ul class="ranking">
     <% @ranking1.each.with_index(1) do |user, i| %>
+    <% unless Kakeibo.where(user_id: user.id).sum(:env_load) == 0 %>
       <li>
         <%= i %>位
         <% if user.avatar_file_name.blank? %>
@@ -19,6 +20,7 @@
           <%= ((Kakeibo.where(user_id: user.id).sum(:env_load)) / user.setai / (Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count)).round(2) %> kg<sub>/人/月</sub>
         </h3>
       </li>
+    <% end %>
     <% end %>
   </ul>
 </div>
