@@ -33,7 +33,11 @@
       </button>
     <% else %>
       <div class="grid-6">
-        <span class="login">初めての方は 👉</span><%= link_to "新規登録", signup_path, class: "post" %>
+        <% if current_page?(login_path) %>
+          <span class="login">初めての方は 👉</span><%= link_to "新規登録", signup_path, class: "post" %>
+        <% elsif current_page?(signup_path) %>
+          <span class="head">アカウントをお持ちの方は 👉</span><%= link_to "ログイン", login_path, class: "post" %>
+        <% end %>
       </div>
     <% end %>
   </div>
