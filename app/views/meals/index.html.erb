@@ -11,8 +11,8 @@
       <% Cuisine.where(id: meal.cuisine_id).each do |i| %>
         <li><%= i.name %> ⭐️
         <%= i.calorie %> kcal <br>
-        <sub>バーチャルウォータ <%= meal.virtualwater %> L </sub><br>
-        <sub>フードマイレージ 　<%= meal.foodmileage %>g　</sub>
+        <sub>バーチャルウォータ <%= meal.virtualwater.round(1) %> L </sub><br>
+        <sub>フードマイレージ 　<%= meal.foodmileage.round(1) %>g　</sub>
       <% end %>
           <%= link_to '削除', "/meals/#{meal.id}", method: :delete %>
           </li>
