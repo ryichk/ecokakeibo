@@ -17,7 +17,7 @@
         <% end %>
         <h3 class="rank">
           <%= user.name %><br>
-          <%= ((Kakeibo.where(user_id: user.id).sum(:env_load)) / user.setai / (Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count)).round(2) %> kg<sub>/人/月</sub>
+          <%= (Kakeibo.where(user_id: user.id).sum(:env_load) / (user.setai * Kakeibo.where(user_id: user.id).group(:month).sum(:env_load).count)).round(2) %> kg<sub> /(人・月)</sub>
         </h3>
       </li>
     <% end %>

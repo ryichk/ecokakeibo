@@ -3,14 +3,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(name: params[:session][:name].downcase)
-    if user && user.authenticate(params[:session][:password])
-      log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to '/kakeibos/new'
+    @user = User.find_by(name: params[:session][:name].downcase)
+    if @user && @user.authenticate(params[:session][:password])
+      log_in @user
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+      redirect_to '/kakeibos/new', notice: "ログインしました。"
     else
-        flash.now[:danger] = 'メールアドレスかパスワードが無効です'
-        render 'new'
+      render 'new'
+      flash[:warning] = 'IDまたはパスワード、またはその両方が間違っています。'
     end
   end
 

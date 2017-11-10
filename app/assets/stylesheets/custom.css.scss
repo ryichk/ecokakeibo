@@ -108,7 +108,19 @@ p {
   margin: 50px;
 }
 
+.warning {
+  color: red;
+}
 
+.notice {
+  color: lime;
+  font-size: 20px;
+}
+
+.login {
+  padding-bottom: -30px;
+  position: relative;
+}
 
 /*sidebar*/
 

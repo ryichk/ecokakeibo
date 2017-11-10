@@ -4,6 +4,9 @@
   <div id="input_consmonth">
     <table class="input_consmonth1">
         <thead>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "#{key}") %>
+          <% end %>
           <tr>
             <h4>・年月を選択してください</h4>
             <th><%= f.month_field :month, value: (Time.now) %></th>
