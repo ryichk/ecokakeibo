@@ -16,7 +16,7 @@
                 <%= image_tag 'denki1.png', :size => "100x100" %>電気
               </th>
               <td>
-                <%= f.number_field :denki, placeholder: '１ヶ月分の使用量（kWh）' %>
+                <%= f.number_field :denki, placeholder: '１ヶ月分の使用量（kWh）', min: 5 %>
                 <%= f.number_field :denki_cost, placeholder: '料金（¥)' %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
               </td>
