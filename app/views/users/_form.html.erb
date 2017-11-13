@@ -17,6 +17,8 @@
   <%= f.label :プロフィール画像 %>
   <%= f.file_field :avatar, class: "form-control floating-label", placeholder: "画像アップロード" %>
 
+  <%= link_to "利用規約", sessions_path, class: "kiyaku" %>
+
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 
 <% end %>
