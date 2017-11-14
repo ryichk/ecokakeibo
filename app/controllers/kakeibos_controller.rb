@@ -2,7 +2,7 @@ class KakeibosController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :create, :destroy]
 
   def index
-    @kakeibos = Kakeibo.page(params[:page]).order("month ASC")
+    @kakeibos = Kakeibo.order("month ASC")
     @kakeibo = Kakeibo.where(user_id: current_user.id).group(:month).order("month ASC")
     @denki_data = @kakeibo.sum(:denki_cost)
     @gas_data = @kakeibo.sum(:gas_cost)
