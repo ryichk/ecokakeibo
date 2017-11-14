@@ -14,16 +14,6 @@ class User < ApplicationRecord
   has_many :kakeibos, dependent: :destroy
   has_many :meals, dependent: :destroy
 
-  if Rails.env.production?
-    S3_CREDENTIALS={access_key_id: "AWS_ACCESS_KEY_ID", secret_access_key: "AWS_SECRET_ACCESS_KEY", bucket: "S3_BUCKET_NAME", s3_host_name: "s3-ap-northeast-1.amazonaws.com"}
-  end
-
-  if Rails.env.production?
-  has_attached_file :avatar, storage: :s3, s3_credentials: S3_CREDENTIALS,
-  styles: { medium: "300x300>", thumb: "100x100>"}, path:":attachment/:id/:style.:extension"
-  else
-    has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
-  end
 
   #与えられた文字列のハッシュ値を返す
   def User.digest(string)
