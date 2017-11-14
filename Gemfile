@@ -76,6 +76,7 @@ gem 'grape'
 gem 'mechanize'
 gem 'jquery-turbolinks'
 gem 'compass-rails'
+gem 'puma_worker_killer'
 group :production do
   gem 'rails_12factor'
   gem 'pg'
