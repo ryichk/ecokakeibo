@@ -69,6 +69,7 @@ gem 'aws-sdk', '~> 2.3'
 gem 'jquery-turbolinks'
 gem 'compass-rails'
 gem 'puma_worker_killer'
+gem 'scout_apm'
 group :production do
   gem 'rails_12factor'
   gem 'pg'
