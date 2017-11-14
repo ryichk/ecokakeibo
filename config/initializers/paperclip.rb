@@ -1,0 +1,1 @@
+Paperclip::Attachment.default_options[:url] = 'kankyohuka.s3.amazonaws.com'
