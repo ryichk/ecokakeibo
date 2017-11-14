@@ -1,5 +1,6 @@
 ja:
   attributes:
+    name: ID
     email: メールアドレス
     password: パスワード
     group_id: グループ名
