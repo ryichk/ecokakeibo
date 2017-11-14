@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   if Rails.env.production?
   has_attached_file :avatar, storage: :s3, s3_credentials: S3_CREDENTIALS,
-  styles: { medium: "300x300>", thumb: "100x100>", path:":attachment/:id/:style.:extension"
+  styles: { medium: "300x300>", thumb: "100x100>"}, path:":attachment/:id/:style.:extension"
   else
     has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
   end
