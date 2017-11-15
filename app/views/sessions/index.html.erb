@@ -12,10 +12,14 @@
 3. 法令、規範の遵守と見直し   <br>保有する個人情報に関して適用される日本の法令、その他規範を遵守します。<br>
 <p></p>
 4. お問い合わせについて<br>
-  個人情報の取り扱いに関するお問い合わせは下記までご連絡ください。   <br>東邦大学理学部生命圏環境科学科環境政策研究室4年市来亮<br>
-  TEL: 090-1107-4226<br>
+  個人情報の取り扱いに関するお問い合わせは下記までご連絡ください。   <br>
+  <p></p>
+  東邦大学理学部 生命圏環境科学科 環境政策研究室 4年 市来亮<br>
+  TEL: 047-472-1560<br>
   Mail: 5614005i@nc.toho-u.ac.jp
 </span>
-<div class="con">
-  ログイン画面に戻る　<span class="login">👉 <%= link_to "ログイン", login_path, class: "get"%></span>
-</div>
+<% unless logged_in? %>
+  <div class="con">
+    ログイン画面に戻る　<span class="login">👉 <%= link_to "ログイン", login_path, class: "get"%></span>
+  </div>
+<% end %>

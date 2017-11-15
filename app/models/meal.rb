@@ -15,154 +15,154 @@ class Meal < ApplicationRecord
       b = a["牛肉"]
       if b == "８枚(約180g)"
         self.gyu_vw = 90 * 20.6
-        self.gyu_fm = 90 * 0.000001 * 15396 * 1461
+        self.gyu_fm = 90 * 0.000001 * 15396 * 20.7
       elsif b == "６枚(約200g)" || b == "２枚（200g）" || b == "１枚(200g)"
         self.gyu_vw = 100 * 20.6
-        self.gyu_fm = 100 * 0.000001 * 15396 * 1461
+        self.gyu_fm = 100 * 0.000001 * 15396 * 20.7
       elsif b == "８枚(約100g)"
         self.gyu_vw = 50 * 20.6
-        self.gyu_fm = 50 * 0.000001 * 15396 * 1461
+        self.gyu_fm = 50 * 0.000001 * 15396 * 20.7
       elsif b == "４枚(220g)"
         self.gyu_vw = 110 * 20.6
-        self.gyu_fm = 110 * 0.000001 * 15396 * 1461
+        self.gyu_fm = 110 * 0.000001 * 15396 * 20.7
       elsif b == "２枚(約240g)"
         self.gyu_vw = 120 * 20.6
-        self.gyu_fm = 120 * 0.000001 * 15396 * 1461
+        self.gyu_fm = 120 * 0.000001 * 15396 * 20.7
       elsif b == "２枚(300g)" || b == "２枚"
         self.gyu_vw = 150 * 20.6
-        self.gyu_fm = 150 * 0.000001 * 15396 * 1461
+        self.gyu_fm = 150 * 0.000001 * 15396 * 20.7
       elsif b == "６枚(120g)" || b == "４枚(120g)" || b == "６枚(約120g)"
         self.gyu_vw = 60 * 20.6
-        self.gyu_fm = 60 * 0.000001 * 15396 * 1461
+        self.gyu_fm = 60 * 0.000001 * 15396 * 20.7
       elsif b == "１枚(約150g)"
         self.gyu_vw = 75 * 20.6
-        self.gyu_fm = 75 * 0.000001 * 15396 * 1461
+        self.gyu_fm = 75 * 0.000001 * 15396 * 20.7
       elsif b == "2枚(約400g)"
         self.gyu_vw = 200 * 20.6
-        self.gyu_fm = 200 * 0.000001 * 15396 * 1461
+        self.gyu_fm = 200 * 0.000001 * 15396 * 20.7
       elsif b == "２枚(160g)"
         self.gyu_vw = 80 * 20.6
-        self.gyu_fm = 80 * 0.000001 * 15396 * 1461
+        self.gyu_fm = 80 * 0.000001 * 15396 * 20.7
       elsif b == "４枚(60g)"
         self.gyu_vw = 30 * 20.6
-        self.gyu_fm = 30 * 0.000001 * 15396 * 1461
+        self.gyu_fm = 30 * 0.000001 * 15396 * 20.7
       else
         self.gyu_vw = b.to_f / 2.000 * 20.6
-        self.gyu_fm = b.to_f / 2.00 * 0.000001 * 15396 * 1461
+        self.gyu_fm = b.to_f / 2.00 * 0.000001 * 15396 * 20.7
       end
     end
     if a.include?('豚肉')
       b = a["豚肉"]
       if b == "８枚(約200g)" || b == "２枚(約200g)" || b == "小２枚(約200g)" || b == "２枚(200g)" || b == "１枚(約200g)" || b == "４枚(約200g)" || b == "約200g" || b == "６枚(約200g)"
         self.buta_vw = 100 * 5.9
-        self.buta_vw = 100 * 0.000001 * 15396 * 1461
+        self.buta_vw = 100 * 0.000001 * 15396 * 20.7
       elsif b == "８枚(約160g)" || b == "８枚"
         self.buta_vw = 80 * 5.9
-        self.buta_fm = 80 * 0.000001 * 15396 * 1461
+        self.buta_fm = 80 * 0.000001 * 15396 * 20.7
       elsif b == "６枚(約120g)" || b == "４～６枚(120g)"
         self.buta_vw = 60 * 5.9
-        self.bata_fm = 60 * 0.000001 * 15396 * 1461
+        self.bata_fm = 60 * 0.000001 * 15396 * 20.7
       elsif b == "６枚" || b == "６枚(100～120g)"
         self.buta_vw = 50 * 5.9
-        self.buta_fm = 50 * 0.000001 * 15396 * 1461
+        self.buta_fm = 50 * 0.000001 * 15396 * 20.7
       elsif b == "２枚(260g)" || b == "２枚"
         self.buta_vw = 130 * 5.9
-        self.buta_fm = 130 * 0.000001 * 15396 * 1461
+        self.buta_fm = 130 * 0.000001 * 15396 * 20.7
       elsif b == "４～６本(約300g)" || b == "５枚" || b == "４本"
         self.buta_vw = 150 * 5.9
-        self.buta_fm = 150 * 0.000001 * 15396 * 1461
+        self.buta_fm = 150 * 0.000001 * 15396 * 20.7
       elsif b == "６枚(約180g)" || b == "６枚(180g)"
         self.buta_vw = 90 * 5.9
-        self.buta_fm = 90 * 0.000001 * 15396 * 1461
+        self.buta_fm = 90 * 0.000001 * 15396 * 20.7
       elsif b == "２枚（240g）"
         self.buta_vw = 120 * 5.9
-        self.buta_fm = 120 * 0.000001 * 15396 * 1461
+        self.buta_fm = 120 * 0.000001 * 15396 * 20.7
       elsif b == "１本(約600g)"
         self.buta_vw = 300 * 5.9
-        self.buta_fm = 300 * 0.000001 * 15396 * 1461
+        self.buta_fm = 300 * 0.000001 * 15396 * 20.7
       elsif b == "４枚(230g)" || b == "４枚"
         self.buta_vw = 115 * 5.9
-        self.buta_fm = 115 * 0.000001 * 15396 * 1461
+        self.buta_fm = 115 * 0.000001 * 15396 * 20.7
       elsif b == "９枚(約150g)"
         self.buta_vw = 75 * 5.9
-        self.buta_fm = 75 * 0.000001 * 15396 * 1461
+        self.buta_fm = 75 * 0.000001 * 15396 * 20.7
       elsif b == "１個(450g)"
         self.buta_vw = 225 * 5.9
-        self.buta_fm = 225 * 0.000001 * 15396 * 1461
+        self.buta_fm = 225 * 0.000001 * 15396 * 20.7
       else
         self.buta_vw = b.to_f / 2.000 * 5.900
-        self.buta_fm = b.to_f / 2.000 * 0.000001 * 15396 * 1461
+        self.buta_fm = b.to_f / 2.000 * 0.000001 * 15396 * 20.7
       end
     end
     if a.include?('とりもも肉') || a.include?('鶏がら') || a.include?('とり肉') || a.include?('とりむね肉') || a.include?('とり手羽先') || a.include?('とり手羽元') || a.include?('とりささ身') || a.include?('とりレバー')
       b = a["とりもも肉"] || a["鶏がら"] || a["とり肉"] || a["とりむね肉"] || a["とり手羽先"] || a["とり手羽元"] || a["とりささ身"] || a["とりレバー"]
       if b == "４本" || b == "大１枚(約200g)"
         self.tori_vw = 100 * 4.5
-        self.tori_fm = 100 * 0.000001 * 15396 * 1461
+        self.tori_fm = 100 * 0.000001 * 15396 * 20.7
       elsif b == "３本(160g)" || b == "３本"
         self.tori_vw = 80 * 4.5
-        self.tori_fm = 80 * 0.000001 * 15396 * 1461
+        self.tori_fm = 80 * 0.000001 * 15396 * 20.7
       elsif b == "2枚(約500g)" || b == "８本(500g)" || b == "８本"
         self.tori_vw = 250 * 4.5
-        self.tori_fm = 250 * 0.000001 * 15396 * 1461
+        self.tori_fm = 250 * 0.000001 * 15396 * 20.7
       elsif b == "２枚(約400g)" || b == "２枚"
         self.tori_vw = 200 * 4.5
-        self.tori_fm = 200 * 0.000001 * 15396 * 1461
+        self.tori_fm = 200 * 0.000001 * 15396 * 20.7
       elsif b == "1/2枚(85g)" || b == "１本" || b == "1/2枚"
         self.tori_vw = 85 / 2 * 4.5
-        self.tori_fm = 85 / 2
+        self.tori_fm = 85 / 2 * 0.000001 * 15396 * 20.7
       elsif b == "10本"
         self.tori_vw = 300 * 4.5
-        self.tori_fm = 300 * 0.000001 * 15396 * 1461
+        self.tori_fm = 300 * 0.000001 * 15396 * 20.7
       else
         self.tori_vw = b.to_f / 2.00 * 4.5
-        self.tori_fm = b.to_f / 2.00 * 0.000001 * 15396 * 1461
+        self.tori_fm = b.to_f / 2.00 * 0.000001 * 15396 * 20.7
       end
     end
     if a.include?('卵')
       b = a["卵"]
       if b.include?('1/2個')
         self.tamago_vw = 14 * 3.2
-        self.tamago_fm = 14 * 0.000001 * 15396 * 1461
+        self.tamago_fm = 14 * 0.000001 * 15396 * 20.7
       elsif b.include?('1/4個')
         self.tamago_vw = 7 * 3.2
-        self.tamago_fm = 7 * 0.000001 * 15396 * 1461
+        self.tamago_fm = 7 * 0.000001 * 15396 * 20.7
       elsif b.include?('１個')
         self.tamago_vw = 28 * 3.2
-        self.tamago_fm = 28 * 0.000001 * 15396 * 1461
+        self.tamago_fm = 28 * 0.000001 * 15396 * 20.7
       elsif b.include?('２個')
         self.tamago_vw = 56 * 3.2
-        self.tamago_fm = 56 * 0.000001 * 15396 * 1461
+        self.tamago_fm = 56 * 0.000001 * 15396 * 20.7
       elsif b.include?('３個')
         self.tamago_vw = 84 * 3.2
-        self.tamago_fm = 84 * 0.000001 * 15396 * 1461
+        self.tamago_fm = 84 * 0.000001 * 15396 * 20.7
       elsif b.include?('４個')
         self.tamago_vw = 112 * 3.2
-        self.tamago_fm = 112 * 0.000001 * 15396 * 1461
+        self.tamago_fm = 112 * 0.000001 * 15396 * 20.7
       elsif b.include?('５個')
         self.tamago_vw = 140 * 3.2
-        self.tamago_fm = 140 * 0.000001 * 15396 * 1461
+        self.tamago_fm = 140 * 0.000001 * 15396 * 20.7
       elsif b.include?('1/2個')
         self.tamago_vw = 14 * 3.2
-        self.tamago_fm = 14 * 0.000001 * 15396 * 1461
+        self.tamago_fm = 14 * 0.000001 * 15396 * 20.7
       else
         self.tamago_vw = b.to_f / 2.000 * 3.2
-        self.tamago_fm = b.to_f / 2.00 * 56 * 0.000001 * 15396 * 1461
+        self.tamago_fm = b.to_f / 2.00 * 56 * 0.000001 * 15396 * 20.7
       end
     end
     if a.include?('米') || a.include?('もち米')
       b = a["米"] || a["もち米"]
       if b.include?('２合') || b.include?('２カップ')
-        self.kome_vw = 360 / 2 * 0.000001 * 3700 * 1000
+        self.kome_vw = 360 / 2 * 3.7
         self.kome_fm = 360 / 2 * 0.000001 * 15396 * 9.6
       elsif b.include?('１合') || b.include?('１カップ')
-        self.kome_vw = 180 / 2 * 0.000001 * 3700 * 1000
+        self.kome_vw = 180 / 2 * 3.7
         self.kome_fm = 180 / 2 * 0.000001 * 15396 * 9.6
       elsif b.include?('３カップ') || b.include?('３合')
-        self.kome_vw = 540 / 2 * 0.000001 * 3700 * 1000
+        self.kome_vw = 540 / 2 * 3.7
         self.kome_fm = 540 / 2 * 0.000001 * 15396 * 9.6
       elsif b == "1/2カップ"
-        self.kome_vw = 90 / 2 * 0.000001 * 3700 * 1000
+        self.kome_vw = 90 / 2 * 3.7
         self.kome_fm = 90 / 2 * 0.000001 * 15396 * 9.6
       elsif b.include?('1.5合') || b.include?('1.5カップ') || b == "１　1/2カップ(270ml)" || b == "１　1/2カップ(270cc)"
         self.kome_vw = 270 / 2 * 3.7
@@ -226,6 +226,13 @@ class Meal < ApplicationRecord
       self.supagety_vw = b.to_f / 2.000 * 2.00
       self.supagety_fm = b.to_f / 2.000 * 0.000001 * 15396 * 20.7
     end
+    if a.include?('ラーメン')
+      b = a["ラーメン"]
+      if b == "２食"
+        self.ramen_vw = 65 * 1.85
+        self.ramen_fm = 65 * 0.000001 * 15396 * 20.7
+      end
+    end
     if a.include?('大根') || a.include?('大根おろし')
       b = a["大根"] || a["大根おろし"]
       if b == "１カップ"
@@ -239,7 +246,6 @@ class Meal < ApplicationRecord
       elsif b == "1/3本"
         self.daikon_vw = 200 * 0.128
         self.daikon_fm = 200 * 0.000001 * 15396 * 20.7
-        self.daikon_fm = 250 * 0.000001 * 15396 * 20.7
       elsif b == "1/5本"
         self.daikon_vw = 125 * 0.128
         self.daikon_fm = 125 * 0.000001 * 15396 * 20.7
@@ -1282,6 +1288,7 @@ class Meal < ApplicationRecord
       elsif b.include?('1/4カップ')
         self.syoyu_vw = 115 / 2 * 0.960
         self.syoyu_fm = 115 / 2 * 0.000001 * 15396
+      else
         self.syoyu_vw = b.to_f / 2 * 0.960
         self.syoyu_fm = b.to_f / 2 * 0.000001 * 15396
       end
