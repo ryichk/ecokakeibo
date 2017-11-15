@@ -41,15 +41,7 @@ end
 # recommended that you close any connections to the database before workers
 # are forked to prevent connection leakage.
 #
-before_fork do
-  require 'puma_worker_killer'
 
-  PumaWorkerKiller.config do |config|
-    config.rolling_restart_frequency = 6 * 3600
-  end
-
-  PumaWorkerKiller.enable_rolling_restart
-end
 
 # The code in the `on_worker_boot` will be called if you are using
 # clustered mode by specifying a number of `workers`. After each worker
