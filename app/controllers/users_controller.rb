@@ -5,14 +5,17 @@ class UsersController < ApplicationController
 
 
   def index
-    user = Kakeibo.group(:user_id).sum(:env_load).keys
-    load = user.map { |id| Kakeibo.where(user_id: id).sum(:env_load) / User.find(id).setai / Kakeibo.where(user_id: id).group(:month).sum(:env_load).count }
-    users = [user, load].transpose
+    env = Kakeibo.group(:user_id).sum(:env_load)
+    setai = User.joins(:kakeibos).group('kakeibos.user_id').pluck('setai')
+    month = Kakeibo.group(:user_id).select(:month).count.values
+    env_load = [env.values, setai].transpose.map{|n| n.inject(:/)}
+    @env_load = [env_load, month].transpose.map{|n| n.inject(:/)}
+    users = [env.keys, @env_load].transpose
     users = Hash[users]
     users = users.sort_by { |k, v| v }
-    users = Hash[users]
-    users = users.keys
-    @ranking1 = users.map { |id| User.find(id) }
+    @users = Hash[users]
+    @user = @users.keys.map { |id| User.find(id) }
+
     users = Meal.group(:user_id).sum(:virtualwater).keys
     vw_ids = users.map { |id| (Meal.where(user_id: id).sum(:virtualwater)) / Cuisine.where(id: Meal.where(user_id: id).select(:cuisine_id)).sum(:calorie) }
     users = [users, vw_ids].transpose
