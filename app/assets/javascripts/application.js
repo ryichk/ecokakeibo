@@ -15,6 +15,5 @@
 //= require jquery.turbolinks
 //= require bootstrap
 //= require chartkick
-//= require rails-ujs
 //= require turbolinks
 //= require_tree .
