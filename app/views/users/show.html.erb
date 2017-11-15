@@ -1,5 +1,6 @@
 
 <% if @month.present? %>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <div class="contents">
   <h1>今月のCO<sub>2 </sub>排出量　<%= image_tag 'co2.jpeg', :size => "80x80" %></h1>
   <div class="env"><h1><%= (@env[@month.month].floor.to_s(:delimited)) %>kg</h1></div>
