@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
 
   resources :sessions, only: [:new, :index]
+  resources :apps, only: [:index]
 
   root 'users#show'
   get 'signup' => 'users#new'
