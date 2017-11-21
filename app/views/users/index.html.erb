@@ -45,7 +45,7 @@
         <h3 class="rank">
           <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
           <%= user.name %><br>
-          <%= ((Meal.where(user_id: user.id).sum(:virtualwater)) / Cuisine.where(id: meal).sum(:calorie)).round(2) %> L<sub>/kcal</sub>
+          <%= ((Meal.where(user_id: user.id).sum(:virtualwater) * 1000) / (Cuisine.where(id: meal).sum(:calorie) ** 2)).round(2) %> mL<sub>/kcal<sup>2</sup></sub>
         </h3>
       </li>
     <% end %>
@@ -68,7 +68,7 @@
         <h3 class="rank">
           <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
           <%= user.name %><br>
-          <%= ((Meal.where(user_id: user.id).sum(:foodmileage)) / Cuisine.where(id: meal).sum(:calorie)).round(2) %> g<sub>/kcal</sub>
+          <%= ((Meal.where(user_id: user.id).sum(:foodmileage) * 1000) / (Cuisine.where(id: meal).sum(:calorie) ** 2)).round(2) %> mg<sub>/kcal<sup>2</sup></sub>
         </h3>
       </li>
     <% end %>

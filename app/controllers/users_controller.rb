@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     users = users.keys
     @ranking1 = users.map { |id| User.find(id) }
     users = Meal.group(:user_id).sum(:virtualwater).keys
-    vw_ids = users.map { |id| (Meal.where(user_id: id).sum(:virtualwater)) / Cuisine.where(id: Meal.where(user_id: id).select(:cuisine_id)).sum(:calorie) }
+    vw_ids = users.map { |id| (Meal.where(user_id: id).sum(:virtualwater)) * 1000 / Cuisine.where(id: Meal.where(user_id: id).select(:cuisine_id)).sum(:calorie) ** 2 }
     users = [users, vw_ids].transpose
     users = Hash[users]
     user = users.sort_by { |k,v| v }
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     users = users.keys
     @ranking2 = users.map { |id| User.find(id) }
     users = Meal.group(:user_id).sum(:foodmileage).keys
-    vw_ids = users.map { |id| (Meal.where(user_id: id).sum(:foodmileage)) / Cuisine.where(id: Meal.where(user_id: id).select(:cuisine_id)).sum(:calorie) }
+    vw_ids = users.map { |id| (Meal.where(user_id: id).sum(:foodmileage)) * 1000 / Cuisine.where(id: Meal.where(user_id: id).select(:cuisine_id)).sum(:calorie) ** 2 }
     users = [users, vw_ids].transpose
     users = Hash[users]
     user = users.sort_by { |k,v| v }
