@@ -32,8 +32,7 @@
 <div class="contents">
   <h2 class="text-small hr-bottom--thin no-space-bottom">
     <i class="icon-crown color-gray-light"></i><%= image_tag 'vw.jpeg', :size => "50x50" %> バーチャルウォーター量
-  </h2><span>＊食事を登録すればするほどランキングが下がるという傾向が見られたため、修正を加えました。(
-    L/<sub>kcal</sub> → ml/<sub>kcal<sup>2</sup></sub>)</span><%= @meal %>
+  </h2><span>＊食事を毎日登録している人ほどランキングの順位が下がるという傾向が見られたため、修正を加えました。(L/<sub>kcal</sub> → ml/<sub>kcal<sup>2</sup></sub>)</span>
   <ul class="ranking">
     <% @ranking2.each.with_index(1) do |user, i|  %>
       <li>
