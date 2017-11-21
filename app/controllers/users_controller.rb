@@ -14,7 +14,8 @@ class UsersController < ApplicationController
     users = users.keys
     @ranking1 = users.map { |id| User.find(id) }
     users = Meal.group(:user_id).sum(:virtualwater).keys
-    vw_ids = users.map { |id| (Meal.where(user_id: id).sum(:virtualwater)) * 1000 / Cuisine.where(id: Meal.where(user_id: id).select(:cuisine_id)).sum(:calorie) ** 2 }
+    vw_ids = users.map { |id| (Meal.where(user_id: id).sum(:virtualwater)) / Meal.where(user_id: id).select("date(created_at) as ordered_date, sum(virtualwater) as total_virtualwater").group("date(created_at)").sum(:virtualwater).count }
+    @meal = Meal.where(user_id: current_user.id).select("date(created_at) as ordered_date, sum(virtualwater) as total_virtualwater").group("date(created_at)").sum(:virtualwater).count
     users = [users, vw_ids].transpose
     users = Hash[users]
     user = users.sort_by { |k,v| v }
