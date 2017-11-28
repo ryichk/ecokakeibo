@@ -7,6 +7,30 @@
         </ul>
         <tr>
           <th>
+            <%= image_tag 'gohan.png', :size => "100x100" %> ごはんもの
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, @gohan, {}, {:include_blank => true} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= image_tag 'siru.png', :size => "100x100" %> 汁物・スープ
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, @soup, {}, {:include_blank => true} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
             <%= image_tag 'yasai.png', :size => "100x100" %> 野菜のおかず
           </th>
           <td>
@@ -43,6 +67,18 @@
         </tr>
         <tr>
           <th>
+            <%= image_tag 'ten.png', :size => "100x100" %> 揚げ物
+          </th>
+          <td>
+            <%= form_for @meal do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.select :cuisine_id, @agemono, {}, {:include_blank => true} %>
+              <%= f.submit "登録", class: "btn-syoku" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
             <%= image_tag 'tamago.png', :size => "100x100" %> 卵・大豆製品
           </th>
           <td>
@@ -55,24 +91,12 @@
         </tr>
         <tr>
           <th>
-            <%= image_tag 'siru.png', :size => "100x100" %> 汁物・スープ
+            <%= image_tag 'men.png', :size => "100x100" %> 麺類
           </th>
           <td>
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, @soup, {}, {:include_blank => true} %>
-              <%= f.submit "登録", class: "btn-syoku" %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= image_tag 'gohan.png', :size => "100x100" %> ごはんもの
-          </th>
-          <td>
-            <%= form_for @meal do |f| %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, @gohan, {}, {:include_blank => true} %>
+              <%= f.select :cuisine_id, @men, {}, {:include_blank => true} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -85,18 +109,6 @@
             <%= form_for @meal do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.select :cuisine_id, @pasta, {}, {:include_blank => true} %>
-              <%= f.submit "登録", class: "btn-syoku" %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= image_tag 'men.png', :size => "100x100" %> 麺類
-          </th>
-          <td>
-            <%= form_for @meal do |f| %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, @men, {}, {:include_blank => true} %>
               <%= f.submit "登録", class: "btn-syoku" %>
             <% end %>
           </td>
@@ -127,19 +139,7 @@
         </tr>
         <tr>
           <th>
-            <%= image_tag 'ten.png', :size => "100x100" %> 揚げ物
-          </th>
-          <td>
-            <%= form_for @meal do |f| %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.select :cuisine_id, @agemono, {}, {:include_blank => true} %>
-              <%= f.submit "登録", class: "btn-syoku" %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= image_tag 'nabe.png', :size => "100x100" %> 鍋もの
+            <%= image_tag 'nabe.png', :size => "100x100" %> 鍋
           </th>
           <td>
             <%= form_for @meal do |f| %>
