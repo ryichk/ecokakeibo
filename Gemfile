@@ -1,5 +1,5 @@
-source 'http://rubygems.org'
-source 'https://rails-assets.org'
+source 'https://rubygems.org'
+source 'http://insecure.rails-assets.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
