@@ -26,9 +26,9 @@
           <li>
             <%= i %>位
             <% if user.avatar_file_name.blank? %>
-              <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
+              <div class="ranking1 image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
             <% else %>
-              <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+              <div class="ranking1 image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
             <% end %>
             <h3 class="rank">
               <%= user.name %><br>
@@ -53,9 +53,9 @@
           <li>
             <%= i %>位
             <% if user.avatar_file_name.blank? %>
-              <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
+              <div class="ranking2 image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
             <% else %>
-              <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+              <div class="ranking2 image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
             <% end %>
             <h3 class="rank">
               <%= user.name %><br>
@@ -80,9 +80,9 @@
           <li>
             <%= i %>位
             <% if user.avatar_file_name.blank? %>
-              <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
+              <div class="ranking3 image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
             <% else %>
-              <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+              <div class="ranking3 image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
             <% end %>
             <h3 class="rank">
               <%= user.name %><br>
@@ -101,9 +101,9 @@
           <li>
             <%= i %>位
             <% if user.avatar_file_name.blank? %>
-              <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
+              <div class="ranking4 image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
             <% else %>
-              <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+              <div class="ranking4 image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
             <% end %>
             <h3 class="rank">
               <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
@@ -123,9 +123,9 @@
           <li>
             <%= i %>位
             <% if user.avatar_file_name.blank? %>
-              <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
+              <div class="ranking5 image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
             <% else %>
-              <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+              <div class="ranking5 image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
             <% end %>
             <h3 class="rank">
               <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
