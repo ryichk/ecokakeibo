@@ -1,6 +1,16 @@
+GIT
+  remote: https://github.com/MustafaZain/less-rails
+  revision: 946213803a5b274260dad17526eb201230e4a761
+  specs:
+    less-rails (2.8.1)
+      actionpack (>= 4.0)
+      less (~> 2.6.0)
+      sprockets (> 2, < 4)
+      tilt
+
 GEM
   remote: https://rubygems.org/
-  remote: http://insecure.rails-assets.org/
+  remote: https://rails-assets.org/
   specs:
     actioncable (5.1.4)
       actionpack (= 5.1.4)
@@ -42,13 +52,13 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (7.2.1)
       execjs
-    aws-sdk (2.10.96)
-      aws-sdk-resources (= 2.10.96)
-    aws-sdk-core (2.10.96)
+    aws-sdk (2.10.97)
+      aws-sdk-resources (= 2.10.97)
+    aws-sdk-core (2.10.97)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.10.96)
-      aws-sdk-core (= 2.10.96)
+    aws-sdk-resources (2.10.97)
+      aws-sdk-core (= 2.10.97)
     aws-sigv4 (1.0.2)
     bcrypt (3.1.11)
     benchmark-ips (2.7.2)
@@ -130,11 +140,6 @@ GEM
     kgio (2.11.0)
     less (2.6.0)
       commonjs (~> 0.2.7)
-    less-rails (2.8.0)
-      actionpack (>= 4.0)
-      less (~> 2.6.0)
-      sprockets (> 2, < 4)
-      tilt
     libv8 (3.16.14.19)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -278,8 +283,8 @@ DEPENDENCIES
   jquery
   jquery-rails
   jquery-turbolinks
-  less-rails
-  listen (>= 3.0.5, < 3.2)
+  less-rails!
+  listen
   mini_magick
   mysql2 (= 0.3.18)
   paperclip

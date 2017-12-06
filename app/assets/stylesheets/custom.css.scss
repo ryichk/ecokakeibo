@@ -633,6 +633,49 @@ header.header {
 
 /* ranking */
 
+.tab-menu {
+  width: 700px;
+  margin-left: 30px;
+
+  ul#tab {
+    margin: 0;
+    padding: 0;
+    margin-top: 50px;
+  }
+  li.tab {
+    display: inline-block;
+    width: 100px;
+    height: 34px;
+    padding: 10px 10px 5px;
+    cursor: pointer;
+    background-color: #AECD6A;
+    border-top-right-radius: 10px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+
+    &.selected {
+      background-color: #fff;
+      color: #aecd6a;
+    }
+  }
+}
+
+.ranking2 {
+  display: none;
+}
+
+.ranking3 {
+  display: none;
+}
+.ranking4 {
+  display: none;
+}
+.ranking5 {
+  display: none;
+}
+
+
 .ribbon-wrap {
     box-sizing: border-box;
     margin: 30px auto;

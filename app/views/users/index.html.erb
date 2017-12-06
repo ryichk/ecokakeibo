@@ -2,130 +2,139 @@
   <h1 class="ribbon">ランキング</h1>
 </div>
   <h6>＊ 間違えて入力してしまった情報は、家計簿または食事記録から削除することができます。</h6>
-<div class="contents">
-  <h2 class="text-small hr-bottom--thin">
-    <i class="icon-crown"></i>電気のCO<sub>2 </sub>排出量<%= image_tag 'co2.jpeg', :size => "80x80" %>
-  </h2>
-  <ul class="ranking">
-    <% @users = [] %>
-    <% @ranking1.each do |user| %>
-      <% unless Kakeibo.where(user_id: user.id).sum(:denki_env) == 0 %>
-        <% @users << user %>
-      <% end %>
-    <% end %>
-    <% @users.each.with_index(1) do |user, i| %>
-      <li>
-        <%= i %>位
-        <% if user.avatar_file_name.blank? %>
-          <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
-        <% else %>
-          <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
-        <% end %>
-        <h3 class="rank">
-          <%= user.name %><br>
-          <%= (Kakeibo.where(user_id: user.id).sum(:denki_env) / (user.setai * Kakeibo.where(user_id: user.id).group(:month).sum(:denki_env).count)).round(2) %> kg<sub> /(人・月)</sub>
-        </h3>
-      </li>
-    <% end %>
+<div class="tab-menu">
+  <ul id="tab">
+    <li id="ranking1" class="tab selected">電気CO<sub>2</sub></li>
+    <li id="ranking2" class="tab">ガスCO<sub>2</sub></li>
+    <li id="ranking3" class="tab">水道CO<sub>2</sub></li>
+    <li id="ranking4" class="tab">VW</li>
+    <li id="ranking5" class="tab">FM</li>
   </ul>
-</div>
-<div class="contents">
-  <h2 class="text-small hr-bottom--thin">
-    <i class="icon-crown"></i>ガスのCO<sub>2 </sub>排出量<%= image_tag 'co2.jpeg', :size => "80x80" %>
-  </h2>
-  <ul class="ranking">
-    <% @users = [] %>
-    <% @ranking2.each do |user| %>
-      <% unless Kakeibo.where(user_id: user.id).sum(:gas_env) == 0 %>
-        <% @users << user %>
-      <% end %>
-    <% end %>
-    <% @users.each.with_index(1) do |user, i| %>
-      <li>
-        <%= i %>位
-        <% if user.avatar_file_name.blank? %>
-          <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
-        <% else %>
-          <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+  <div class="contents">
+    <div class="ranking1">
+      <h2 class="text-small hr-bottom--thin">
+        <i class="icon-crown"></i>電気のCO<sub>2 </sub>排出量<%= image_tag 'co2.jpeg', :size => "80x80" %>
+      </h2>
+      <ul class="ranking">
+        <% @users = [] %>
+        <% @ranking1.each do |user| %>
+          <% unless Kakeibo.where(user_id: user.id).sum(:denki_env) == 0 %>
+            <% @users << user %>
+          <% end %>
         <% end %>
-        <h3 class="rank">
-          <%= user.name %><br>
-          <%= (Kakeibo.where(user_id: user.id).sum(:gas_env) / (user.setai * Kakeibo.where(user_id: user.id).group(:month).sum(:gas_env).count)).round(2) %> kg<sub> /(人・月)</sub>
-        </h3>
-      </li>
-    <% end %>
-  </ul>
-</div>
-<div class="contents">
-  <h2 class="text-small hr-bottom--thin">
-    <i class="icon-crown"></i>水道のCO<sub>2 </sub>排出量<%= image_tag 'co2.jpeg', :size => "80x80" %>
-  </h2>
-  <ul class="ranking">
-    <% @users = [] %>
-    <% @ranking3.each do |user| %>
-      <% unless Kakeibo.where(user_id: user.id).sum(:suidou_env) == 0 %>
-        <% @users << user %>
-      <% end %>
-    <% end %>
-    <% @users.each.with_index(1) do |user, i| %>
-      <li>
-        <%= i %>位
-        <% if user.avatar_file_name.blank? %>
-          <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
-        <% else %>
-          <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+        <% @users.each.with_index(1) do |user, i| %>
+          <li>
+            <%= i %>位
+            <% if user.avatar_file_name.blank? %>
+              <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
+            <% else %>
+              <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+            <% end %>
+            <h3 class="rank">
+              <%= user.name %><br>
+              <%= (Kakeibo.where(user_id: user.id).sum(:denki_env) / (user.setai * Kakeibo.where(user_id: user.id).group(:month).sum(:denki_env).count)).round(2) %> kg<sub> /(人・月)</sub>
+            </h3>
+          </li>
         <% end %>
-        <h3 class="rank">
-          <%= user.name %><br>
-          <%= (Kakeibo.where(user_id: user.id).sum(:suidou_env) / (user.setai * Kakeibo.where(user_id: user.id).group(:month).sum(:suidou_env).count)).round(2) %> kg<sub> /(人・月)</sub>
-        </h3>
-      </li>
-    <% end %>
-  </ul>
-</div>
-<hr>
-<div class="contents">
-  <h2 class="text-small hr-bottom--thin no-space-bottom">
-    <i class="icon-crown color-gray-light"></i><%= image_tag 'vw.jpeg', :size => "50x50" %> バーチャルウォーター量
-  </h2>
-  <ul class="ranking">
-    <% @ranking4.each.with_index(1) do |user, i|  %>
-      <li>
-        <%= i %>位
-        <% if user.avatar_file_name.blank? %>
-          <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
-        <% else %>
-          <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+      </ul>
+    </div>
+    <div class="ranking2">
+      <h2 class="text-small hr-bottom--thin">
+        <i class="icon-crown"></i>ガスのCO<sub>2 </sub>排出量<%= image_tag 'co2.jpeg', :size => "80x80" %>
+      </h2>
+      <ul class="ranking">
+        <% @users = [] %>
+        <% @ranking2.each do |user| %>
+          <% unless Kakeibo.where(user_id: user.id).sum(:gas_env) == 0 %>
+            <% @users << user %>
+          <% end %>
         <% end %>
-        <h3 class="rank">
-          <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
-          <%= user.name %><br>
-          <%= ((Meal.where(user_id: user.id).sum(:virtualwater) * 1000) / (Cuisine.where(id: meal).sum(:calorie) ** 2)).round(2) %> mL<sub>/kcal<sup>2</sup></sub>
-        </h3>
-      </li>
-    <% end %>
-  </ul>
-</div>
-<hr>
-<div class="contents">
-  <h2 class="text-small hr-bottom--thin no-space-bottom">
-    <i class="icon-crown color-gray-light"></i><%= image_tag 'fm2.png', :size => "70x70" %>フードマイレージCO<sub>2 </sub>排出量 <%= image_tag 'fm1.jpeg', :size => "60x60" %>
-  </h2>
-  <ul class="ranking">
-    <% @ranking5.each.with_index(1) do |user, i|  %>
-      <li>
-        <%= i %>位
-        <% if user.avatar_file_name.blank? %>
-          <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
-        <% else %>
-          <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+        <% @users.each.with_index(1) do |user, i| %>
+          <li>
+            <%= i %>位
+            <% if user.avatar_file_name.blank? %>
+              <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
+            <% else %>
+              <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+            <% end %>
+            <h3 class="rank">
+              <%= user.name %><br>
+              <%= (Kakeibo.where(user_id: user.id).sum(:gas_env) / (user.setai * Kakeibo.where(user_id: user.id).group(:month).sum(:gas_env).count)).round(2) %> kg<sub> /(人・月)</sub>
+            </h3>
+          </li>
         <% end %>
-        <h3 class="rank">
-          <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
-          <%= user.name %><br>
-          <%= ((Meal.where(user_id: user.id).sum(:foodmileage) * 1000) / (Cuisine.where(id: meal).sum(:calorie) ** 2)).round(2) %> mg<sub>/kcal<sup>2</sup></sub>
-        </h3>
-      </li>
-    <% end %>
-  </ul>
+      </ul>
+    </div>
+    <div class="ranking3">
+      <h2 class="text-small hr-bottom--thin">
+        <i class="icon-crown"></i>水道のCO<sub>2 </sub>排出量<%= image_tag 'co2.jpeg', :size => "80x80" %>
+      </h2>
+      <ul class="ranking">
+        <% @users = [] %>
+        <% @ranking3.each do |user| %>
+          <% unless Kakeibo.where(user_id: user.id).sum(:suidou_env) == 0 %>
+            <% @users << user %>
+          <% end %>
+        <% end %>
+        <% @users.each.with_index(1) do |user, i| %>
+          <li>
+            <%= i %>位
+            <% if user.avatar_file_name.blank? %>
+              <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
+            <% else %>
+              <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+            <% end %>
+            <h3 class="rank">
+              <%= user.name %><br>
+              <%= (Kakeibo.where(user_id: user.id).sum(:suidou_env) / (user.setai * Kakeibo.where(user_id: user.id).group(:month).sum(:suidou_env).count)).round(2) %> kg<sub> /(人・月)</sub>
+            </h3>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="ranking4">
+      <h2 class="text-small hr-bottom--thin no-space-bottom">
+        <i class="icon-crown color-gray-light"></i><%= image_tag 'vw.jpeg', :size => "50x50" %> バーチャルウォーター量
+      </h2>
+      <ul class="ranking">
+        <% @ranking4.each.with_index(1) do |user, i|  %>
+          <li>
+            <%= i %>位
+            <% if user.avatar_file_name.blank? %>
+              <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
+            <% else %>
+              <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+            <% end %>
+            <h3 class="rank">
+              <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
+              <%= user.name %><br>
+              <%= ((Meal.where(user_id: user.id).sum(:virtualwater) * 1000) / (Cuisine.where(id: meal).sum(:calorie) ** 2)).round(2) %> mL<sub>/kcal<sup>2</sup></sub>
+            </h3>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="ranking5">
+      <h2 class="text-small hr-bottom--thin no-space-bottom">
+        <i class="icon-crown color-gray-light"></i><%= image_tag 'fm2.png', :size => "70x70" %>フードマイレージCO<sub>2 </sub>排出量 <%= image_tag 'fm1.jpeg', :size => "60x60" %>
+      </h2>
+      <ul class="ranking">
+        <% @ranking5.each.with_index(1) do |user, i|  %>
+          <li>
+            <%= i %>位
+            <% if user.avatar_file_name.blank? %>
+              <div class="image2"><%= image_tag 'alt.png', :size => "100x100" %></div>
+            <% else %>
+              <div class="image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
+            <% end %>
+            <h3 class="rank">
+              <% meal = Meal.where(user_id: user.id).select(:cuisine_id) %>
+              <%= user.name %><br>
+              <%= ((Meal.where(user_id: user.id).sum(:foodmileage) * 1000) / (Cuisine.where(id: meal).sum(:calorie) ** 2)).round(2) %> mg<sub>/kcal<sup>2</sup></sub>
+            </h3>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

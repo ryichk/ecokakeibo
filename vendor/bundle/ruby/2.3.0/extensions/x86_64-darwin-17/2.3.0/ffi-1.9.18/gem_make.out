@@ -1,0 +1,67 @@
+current directory: /Users/ichiki/projects/ecokakeibo/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.18/ext/ffi_c
+/Users/ichiki/.rvm/rubies/ruby-2.3.1/bin/ruby -r ./siteconf20171206-41297-z8uuaa.rb extconf.rb
+Ignoring kgio-2.11.0 because its extensions are not built.  Try: gem pristine kgio --version 2.11.0
+Ignoring mysql2-0.3.18 because its extensions are not built.  Try: gem pristine mysql2 --version 0.3.18
+Ignoring puma-3.11.0 because its extensions are not built.  Try: gem pristine puma --version 3.11.0
+Ignoring raindrops-0.19.0 because its extensions are not built.  Try: gem pristine raindrops --version 0.19.0
+Ignoring therubyracer-0.12.3 because its extensions are not built.  Try: gem pristine therubyracer --version 0.12.3
+Ignoring unicorn-5.3.1 because its extensions are not built.  Try: gem pristine unicorn --version 5.3.1
+checking for ffi.h... no
+checking for ffi.h in /usr/local/include,/usr/include/ffi... yes
+checking for ffi_call() in -lffi... yes
+checking for ffi_prep_closure()... yes
+checking for ffi_raw_call()... no
+checking for shlwapi.h... no
+checking for rb_thread_blocking_region()... no
+checking for rb_thread_call_with_gvl()... yes
+checking for rb_thread_call_without_gvl()... yes
+checking for ffi_prep_cif_var()... no
+creating extconf.h
+creating Makefile
+
+current directory: /Users/ichiki/projects/ecokakeibo/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.18/ext/ffi_c
+make "DESTDIR=" clean
+
+current directory: /Users/ichiki/projects/ecokakeibo/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.18/ext/ffi_c
+make "DESTDIR="
+compiling Thread.c
+compiling Buffer.c
+compiling DynamicLibrary.c
+compiling Variadic.c
+compiling ffi.c
+compiling Pointer.c
+compiling MemoryPointer.c
+compiling Platform.c
+compiling LongDouble.c
+compiling Function.c
+Function.c:563:9: warning: implicit declaration of function 'rb_thread_call_without_gvl' is invalid in C99 [-Wimplicit-function-declaration]
+        rb_thread_call_without_gvl(async_cb_wait, &w, async_cb_stop, &w);
+        ^
+1 warning generated.
+compiling MappedType.c
+compiling Type.c
+compiling Types.c
+compiling StructLayout.c
+compiling DataConverter.c
+compiling ArrayType.c
+compiling StructByReference.c
+compiling LastError.c
+compiling Struct.c
+compiling Call.c
+Call.c:355:5: warning: implicit declaration of function 'rb_thread_call_without_gvl' is invalid in C99 [-Wimplicit-function-declaration]
+    rbffi_thread_blocking_region(call_blocking_function, data, (void *) -1, NULL);
+    ^
+./Thread.h:78:39: note: expanded from macro 'rbffi_thread_blocking_region'
+# define rbffi_thread_blocking_region rb_thread_call_without_gvl
+                                      ^
+1 warning generated.
+compiling MethodHandle.c
+compiling AbstractMemory.c
+compiling FunctionInfo.c
+compiling ClosurePool.c
+compiling StructByValue.c
+linking shared-object ffi_c.bundle
+
+current directory: /Users/ichiki/projects/ecokakeibo/vendor/bundle/ruby/2.3.0/gems/ffi-1.9.18/ext/ffi_c
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 ffi_c.bundle ./.gem.20171206-41297-1vx9tls
