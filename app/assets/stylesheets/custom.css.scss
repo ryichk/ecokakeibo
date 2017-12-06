@@ -655,7 +655,7 @@ header.header {
     text-align: center;
 
     &.selected {
-      background-color: #fff;
+      background-color: #fffff0;
       color: #aecd6a;
     }
   }
@@ -732,17 +732,19 @@ h1.ribbon {
 
 .text-small {
   margin-top: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  margin-left: -100px;
 }
+
 
 .ranking{
   padding: 20;
-  padding-left: -10px;
+  padding-left: -20px;
   list-style-type: none;
   li{
     position: relative;
     margin-top: 30px;
-    margin-left: 30px;
+    margin-left: 0px;
     padding: 0 0 0 50px;
     border-bottom: 1px dotted #ccc;
     height: 80px;
