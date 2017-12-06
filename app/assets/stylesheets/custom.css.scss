@@ -635,7 +635,7 @@ header.header {
 
 .tab-menu {
   width: 700px;
-  margin-left: 30px;
+  margin-left: 10px;
 
   ul#tab {
     margin: 0;
@@ -737,6 +737,7 @@ h1.ribbon {
 
 .ranking{
   padding: 20;
+  padding-left: -10px;
   list-style-type: none;
   li{
     position: relative;
