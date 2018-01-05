@@ -175,20 +175,20 @@ class Meal < ApplicationRecord
     if a.include?('ご飯')
       b = a["ご飯"]
       if b == "茶碗１杯分" || b == "１カップ"
-        self.gohan_vw = b.to_f / 2.000 * 150 * 3.7
-        self.gohan_fm = b.to_f / 2.000 * 150 * 0.000001 * 15396 * 9.6
+        self.gohan_vw = 2 * 150 * 3.7
+        self.gohan_fm = 2 * 150 * 0.000001 * 15396 * 9.6
       elsif b == "茶碗２杯分" || b == "２皿分" || b == "２杯"
-        self.gohan_vw = b.to_f / 2.000 * 300 * 3.7
-        self.gohan_fm = b.to_f / 2.000 * 300 * 0.000001 * 15396 * 9.6
+        self.gohan_vw = 2 * 300 * 3.7
+        self.gohan_fm = 2 * 300 * 0.000001 * 15396 * 9.6
       elsif b == "どんぶり２杯分"
-        self.gohan_vw = 400 / 2.000 * 3.7
-        self.gohan_fm = 400 / 2.000 * 0.000001 * 15396 * 9.6
+        self.gohan_vw = 400 / 2 * 3.7
+        self.gohan_fm = 400 / 2 * 0.000001 * 15396 * 9.6
       elsif b == "茶碗３杯分"
-        self.gohan_vw = 450 / 2.000 * 3.7
-        self.gohan_fm = 450 / 2.000 * 0.000001 * 15396 * 9.6
+        self.gohan_vw = 450 / 2 * 3.7
+        self.gohan_fm = 450 / 2 * 0.000001 * 15396 * 9.6
       else
-        self.gohan_vw = b.to_f / 2.000 * 3.7
-        self.gohan_fm = b.to_f / 2.000 * 0.000001 * 15396 * 9.6
+        self.gohan_vw = b.to_f / 2 * 3.7
+        self.gohan_fm = b.to_f / 2 * 0.000001 * 15396 * 9.6
       end
     end
     if a.include?('食パン') || a.include?('フランスパン') || a.include?('パン')
