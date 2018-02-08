@@ -31,7 +31,7 @@
               <div class="ranking1 image2" style="background-image: url(<%= user.avatar.url(:medium) %>);"></div>
             <% end %>
             <h3 class="rank">
-              <%= user.name %><br>
+              <%= link_to user.name, user_path(user.id) %><br>
               <%= (Kakeibo.where(user_id: user.id).sum(:denki_env) / (user.setai * Kakeibo.where(user_id: user.id).group(:month).sum(:denki_env).count)).round(2) %> kg<sub> /(人・月)</sub>
             </h3>
           </li>

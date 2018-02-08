@@ -335,16 +335,27 @@ tr {
 
 th {
   padding: 15px;
-  border-right: 1px solid #ccc;
+  border-right: 1vw solid #ccc;
   height: 90px;
+  height: 10vw;
+  width: 30vw;
 }
 
 
 td {
   font-size: 18px;
+  height: 20vw;
   width: 100px;
+  width: 40vw;
   padding: 10px;
-  border-right: 1px solid #ccc;
+  border-right: 1vw solid #ccc;
+}
+input {
+  width: 40vw;
+  height: 20vw;
+}
+.btn-primary{
+  margin-left: 25vw;
 }
 
 ul.more_list {
@@ -427,7 +438,7 @@ text {
 }
 
 .container1 {
-  height: 70px;
+  height: 70vw;
 }
 
 .foo {
@@ -510,6 +521,7 @@ header.header {
       cursor: pointer;
       padding: 10px;
       position: fixed;
+      top: 90px;
       &:after {
         content: '▼';
         font-size: .7em;
@@ -546,7 +558,7 @@ header.header {
 
 /* トグルボタン */
 #menubtn {
-  width: 100px;
+  width: 90px;
   height: 60px;
   padding: 6px 12px;
   border: solid 1px #aaaaaa;
@@ -600,6 +612,9 @@ header.header {
   background-size: cover;
   background-position: center center;
   border-radius: 3px;
+  position: fixed;
+  top: 30px;
+  left: 20px;
 }
 
 
@@ -623,6 +638,7 @@ header.header {
     color: green;
     background-color: white;
     width: 200px;
+    margin-left: 10vw;
   &:hover {
     border-color: lighten($accent, 15%);
     color: lighten($accent, 15%);
@@ -641,11 +657,14 @@ header.header {
     margin: 0;
     padding: 0;
     margin-top: 50px;
+    widht: 50vw;
   }
   li.tab {
     display: inline-block;
     width: 110px;
+    width: 14vw;
     height: 45px;
+    height: 5vw;
     padding: 10px;
     cursor: pointer;
     background-color: #AECD6A;
@@ -770,6 +789,7 @@ h1.ribbon {
 
 img {
   margin: 5px;
+
 }
 
 /* syokujidata */
