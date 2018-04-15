@@ -50,7 +50,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'derailed'
   gem 'bullet'
-  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -72,6 +71,7 @@ gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
 gem 'jquery-turbolinks'
 gem 'compass-rails'
+gem 'payjp'
 group :production do
   gem 'rails_12factor'
   gem 'pg'
