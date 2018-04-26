@@ -28,8 +28,6 @@ class KakeibosController < ApplicationController
   end
 
 
-
-
   def destroy
     kakeibo = Kakeibo.find(params[:id])
     kakeibo.destroy if kakeibo.user_id == current_user.id
