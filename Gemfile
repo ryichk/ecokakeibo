@@ -56,7 +56,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'therubyracer'
-gem 'less-rails', git: 'https://github.com/MustafaZain/less-rails'
+gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-sass'
 gem 'compass-rails'
@@ -68,7 +68,7 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'mini_magick'
 gem 'paperclip'
-gem 'aws-sdk', '~> 2.3'
+gem 'aws-sdk'
 gem 'jquery-turbolinks'
 gem 'compass-rails'
 gem 'payjp'
