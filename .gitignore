@@ -14,7 +14,7 @@
 !/tmp/.keep
 
 /node_modules
-/vendor
+/vendor/*
 /yarn-error.log
 
 .byebug_history
