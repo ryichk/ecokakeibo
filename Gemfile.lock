@@ -109,7 +109,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.9.0)
     execjs (2.7.0)
-    ffi (1.9.18)
+    ffi (1.13.1)
     get_process_mem (0.2.5)
       ffi (~> 1.0)
     globalid (0.4.1)
