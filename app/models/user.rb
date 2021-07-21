@@ -8,8 +8,8 @@ class User < ApplicationRecord
   validates :setai, presence: true, length: { minimum: 1, maximum: 2 }, numericality: { greater_than_or_equal_to: 1}
   has_secure_password
   validates :password, presence: true, length: { minimum: 4, maximum: 8 }, allow_nil: true
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
-  validates_attachment_content_type :avatar, content_type: ["image/jpg","image/jpeg","image/png"]
+  # has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
+  # validates_attachment_content_type :avatar, content_type: ["image/jpg","image/jpeg","image/png"]
 
   has_many :kakeibos, dependent: :destroy
   has_many :meals, dependent: :destroy
