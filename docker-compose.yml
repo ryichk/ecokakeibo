@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  db:
+    container_name: ecokakeibo-db
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - /tmp/dockerdir:/etc/mysql/conf.d/
+    ports:
+      - 3306:3306
+  api:
+    container_name: ecokakeibo-api
+    tty: true
+    stdin_open: true
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8080 -b '0.0.0.0'"
+    volumes:
+      - .:/ecokakeibo
+      - bundle:/usr/local/bundle
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+volumes:
+  mysql-data:
+  bundle:
