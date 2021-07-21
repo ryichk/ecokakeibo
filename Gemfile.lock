@@ -156,7 +156,8 @@ GEM
     payjp (0.0.6)
       rest-client (~> 2.0)
     pg (1.0.0)
-    puma (3.12.6)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -278,7 +279,7 @@ DEPENDENCIES
   mysql2 (= 0.3.18)
   payjp
   pg
-  puma (~> 3.12)
+  puma (~> 4.3)
   rails (~> 5.1.2)
   rails_12factor
   sass-rails (~> 5.0)
