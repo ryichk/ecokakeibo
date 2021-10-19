@@ -2,17 +2,17 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012065802) do
+ActiveRecord::Schema.define(version: 2017_10_12_065802) do
 
-  create_table "cuisines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "cuisines", charset: "utf8mb3", force: :cascade do |t|
     t.string "genre"
     t.string "name"
     t.integer "calorie"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20171012065802) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "foodstuffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "foodstuffs", charset: "utf8mb3", force: :cascade do |t|
     t.string "food"
     t.string "amount"
     t.integer "cuisine_id"
@@ -28,197 +28,197 @@ ActiveRecord::Schema.define(version: 20171012065802) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "kakeibos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.float "denki", limit: 24
+  create_table "kakeibos", charset: "utf8mb3", force: :cascade do |t|
+    t.float "denki"
     t.integer "denki_cost"
-    t.float "gas", limit: 24
+    t.float "gas"
     t.integer "gas_cost"
-    t.float "suidou", limit: 24
+    t.float "suidou"
     t.integer "suidou_cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "month"
     t.integer "user_id"
-    t.float "denki_env", limit: 24
-    t.float "gas_env", limit: 24
-    t.float "suidou_env", limit: 24
-    t.float "env_load", limit: 24
+    t.float "denki_env"
+    t.float "gas_env"
+    t.float "suidou_env"
+    t.float "env_load"
   end
 
-  create_table "meals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "meals", charset: "utf8mb3", force: :cascade do |t|
     t.integer "cuisine_id"
     t.integer "user_id"
-    t.float "foodmileage", limit: 24
-    t.float "virtualwater", limit: 24
+    t.float "foodmileage"
+    t.float "virtualwater"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "gyu_vw", limit: 24
-    t.float "gyu_fm", limit: 24
-    t.float "buta_vw", limit: 24
-    t.float "buta_fm", limit: 24
-    t.float "tori_vw", limit: 24
-    t.float "tori_fm", limit: 24
-    t.float "tamago_vw", limit: 24
-    t.float "tamago_fm", limit: 24
-    t.float "kome_vw", limit: 24
-    t.float "kome_fm", limit: 24
-    t.float "gohan_vw", limit: 24
-    t.float "gohan_fm", limit: 24
-    t.float "pan_vw", limit: 24
-    t.float "pan_fm", limit: 24
-    t.float "udon_vw", limit: 24
-    t.float "udon_fm", limit: 24
-    t.float "soumen_vw", limit: 24
-    t.float "soumen_fm", limit: 24
-    t.float "soba_vw", limit: 24
-    t.float "soba_fm", limit: 24
-    t.float "supagety_vw", limit: 24
-    t.float "supagety_fm", limit: 24
-    t.float "ramen_vw", limit: 24
-    t.float "ramen_fm", limit: 24
-    t.float "daikon_vw", limit: 24
-    t.float "daikon_fm", limit: 24
-    t.float "kabu_vw", limit: 24
-    t.float "kabu_fm", limit: 24
-    t.float "ninjin_vw", limit: 24
-    t.float "ninjin_fm", limit: 24
-    t.float "gobou_vw", limit: 24
-    t.float "gobou_fm", limit: 24
-    t.float "renkon_vw", limit: 24
-    t.float "renkon_fm", limit: 24
-    t.float "satoimo_vw", limit: 24
-    t.float "satoimo_fm", limit: 24
-    t.float "yamaimo_vw", limit: 24
-    t.float "yamaimo_fm", limit: 24
-    t.float "hakusai_vw", limit: 24
-    t.float "hakusai_fm", limit: 24
-    t.float "kyabetsu_vw", limit: 24
-    t.float "kyabetsu_fm", limit: 24
-    t.float "hourensou_vw", limit: 24
-    t.float "hourensou_fm", limit: 24
-    t.float "negi_vw", limit: 24
-    t.float "negi_fm", limit: 24
-    t.float "tamanegi_vw", limit: 24
-    t.float "tamanegi_fm", limit: 24
-    t.float "nasu_vw", limit: 24
-    t.float "nasu_fm", limit: 24
-    t.float "tomato_vw", limit: 24
-    t.float "tomato_fm", limit: 24
-    t.float "kyuri_vw", limit: 24
-    t.float "kyuri_fm", limit: 24
-    t.float "kabotya_vw", limit: 24
-    t.float "kabotya_fm", limit: 24
-    t.float "pyman_vw", limit: 24
-    t.float "pyman_fm", limit: 24
-    t.float "endou_vw", limit: 24
-    t.float "endou_fm", limit: 24
-    t.float "edamame_vw", limit: 24
-    t.float "edamame_fm", limit: 24
-    t.float "ingen_vw", limit: 24
-    t.float "ingen_fm", limit: 24
-    t.float "tomorokoshi_vw", limit: 24
-    t.float "tomorokoshi_fm", limit: 24
-    t.float "retasu_vw", limit: 24
-    t.float "retasu_fm", limit: 24
-    t.float "serori_vw", limit: 24
-    t.float "serori_fm", limit: 24
-    t.float "karifura_vw", limit: 24
-    t.float "karifura_fm", limit: 24
-    t.float "buro_vw", limit: 24
-    t.float "buro_fm", limit: 24
-    t.float "jaga_vw", limit: 24
-    t.float "jaga_fm", limit: 24
-    t.float "satsumaimo_vw", limit: 24
-    t.float "satsumaimo_fm", limit: 24
-    t.float "ninniku_vw", limit: 24
-    t.float "ninniku_fm", limit: 24
-    t.float "shitake_vw", limit: 24
-    t.float "shitake_fm", limit: 24
-    t.float "kuri_vw", limit: 24
-    t.float "kuri_fm", limit: 24
-    t.float "daizu_vw", limit: 24
-    t.float "daizu_fm", limit: 24
-    t.float "mikan_vw", limit: 24
-    t.float "mikan_fm", limit: 24
-    t.float "kiui_vw", limit: 24
-    t.float "kiui_fm", limit: 24
-    t.float "orange_vw", limit: 24
-    t.float "orange_fm", limit: 24
-    t.float "ringo_vw", limit: 24
-    t.float "ringo_fm", limit: 24
-    t.float "budou_vw", limit: 24
-    t.float "budou_fm", limit: 24
-    t.float "nashi_vw", limit: 24
-    t.float "nashi_fm", limit: 24
-    t.float "momo_vw", limit: 24
-    t.float "momo_fm", limit: 24
-    t.float "sumomo_vw", limit: 24
-    t.float "sumomo_fm", limit: 24
-    t.float "pain_vw", limit: 24
-    t.float "pain_fm", limit: 24
-    t.float "sakura_vw", limit: 24
-    t.float "sakura_fm", limit: 24
-    t.float "kaki_vw", limit: 24
-    t.float "kaki_fm", limit: 24
-    t.float "ichigo_vw", limit: 24
-    t.float "ichigo_fm", limit: 24
-    t.float "suika_vw", limit: 24
-    t.float "suika_fm", limit: 24
-    t.float "meron_vw", limit: 24
-    t.float "meron_fm", limit: 24
-    t.float "touhu_vw", limit: 24
-    t.float "touhu_fm", limit: 24
-    t.float "konnyaku_vw", limit: 24
-    t.float "konnyaku_fm", limit: 24
-    t.float "bata_vw", limit: 24
-    t.float "bata_fm", limit: 24
-    t.float "yoogle_vw", limit: 24
-    t.float "yoogle_fm", limit: 24
-    t.float "cheese_vw", limit: 24
-    t.float "cheese_fm", limit: 24
-    t.float "gyunyu_vw", limit: 24
-    t.float "gyunyu_fm", limit: 24
-    t.float "v_vw", limit: 24
-    t.float "v_fm", limit: 24
-    t.float "sio_vw", limit: 24
-    t.float "sio_fm", limit: 24
-    t.float "syoyu_vw", limit: 24
-    t.float "syoyu_fm", limit: 24
-    t.float "sake_vw", limit: 24
-    t.float "sake_fm", limit: 24
-    t.float "miso_vw", limit: 24
-    t.float "miso_fm", limit: 24
-    t.float "kecha_vw", limit: 24
-    t.float "kecha_fm", limit: 24
-    t.float "kosyo_vw", limit: 24
-    t.float "kosyo_fm", limit: 24
-    t.float "kary_vw", limit: 24
-    t.float "kary_fm", limit: 24
-    t.float "komugi_vw", limit: 24
-    t.float "komugi_fm", limit: 24
-    t.float "satou_vw", limit: 24
-    t.float "satou_fm", limit: 24
-    t.float "su_vw", limit: 24
-    t.float "su_fm", limit: 24
-    t.float "syokubutsuyu_vw", limit: 24
-    t.float "syokubutsuyu_fm", limit: 24
-    t.float "oliveoil_vw", limit: 24
-    t.float "oliveoil_fm", limit: 24
-    t.float "tya_vw", limit: 24
-    t.float "tya_fm", limit: 24
-    t.float "mugitya_vw", limit: 24
-    t.float "mugitya_fm", limit: 24
-    t.float "tea_vw", limit: 24
-    t.float "tea_fm", limit: 24
-    t.float "coffee_vw", limit: 24
-    t.float "coffee_fm", limit: 24
-    t.float "orangejuce_vw", limit: 24
-    t.float "orangejuce_fm", limit: 24
-    t.float "lemonjuce_vw", limit: 24
-    t.float "lemonjuce_fm", limit: 24
+    t.float "gyu_vw"
+    t.float "gyu_fm"
+    t.float "buta_vw"
+    t.float "buta_fm"
+    t.float "tori_vw"
+    t.float "tori_fm"
+    t.float "tamago_vw"
+    t.float "tamago_fm"
+    t.float "kome_vw"
+    t.float "kome_fm"
+    t.float "gohan_vw"
+    t.float "gohan_fm"
+    t.float "pan_vw"
+    t.float "pan_fm"
+    t.float "udon_vw"
+    t.float "udon_fm"
+    t.float "soumen_vw"
+    t.float "soumen_fm"
+    t.float "soba_vw"
+    t.float "soba_fm"
+    t.float "supagety_vw"
+    t.float "supagety_fm"
+    t.float "ramen_vw"
+    t.float "ramen_fm"
+    t.float "daikon_vw"
+    t.float "daikon_fm"
+    t.float "kabu_vw"
+    t.float "kabu_fm"
+    t.float "ninjin_vw"
+    t.float "ninjin_fm"
+    t.float "gobou_vw"
+    t.float "gobou_fm"
+    t.float "renkon_vw"
+    t.float "renkon_fm"
+    t.float "satoimo_vw"
+    t.float "satoimo_fm"
+    t.float "yamaimo_vw"
+    t.float "yamaimo_fm"
+    t.float "hakusai_vw"
+    t.float "hakusai_fm"
+    t.float "kyabetsu_vw"
+    t.float "kyabetsu_fm"
+    t.float "hourensou_vw"
+    t.float "hourensou_fm"
+    t.float "negi_vw"
+    t.float "negi_fm"
+    t.float "tamanegi_vw"
+    t.float "tamanegi_fm"
+    t.float "nasu_vw"
+    t.float "nasu_fm"
+    t.float "tomato_vw"
+    t.float "tomato_fm"
+    t.float "kyuri_vw"
+    t.float "kyuri_fm"
+    t.float "kabotya_vw"
+    t.float "kabotya_fm"
+    t.float "pyman_vw"
+    t.float "pyman_fm"
+    t.float "endou_vw"
+    t.float "endou_fm"
+    t.float "edamame_vw"
+    t.float "edamame_fm"
+    t.float "ingen_vw"
+    t.float "ingen_fm"
+    t.float "tomorokoshi_vw"
+    t.float "tomorokoshi_fm"
+    t.float "retasu_vw"
+    t.float "retasu_fm"
+    t.float "serori_vw"
+    t.float "serori_fm"
+    t.float "karifura_vw"
+    t.float "karifura_fm"
+    t.float "buro_vw"
+    t.float "buro_fm"
+    t.float "jaga_vw"
+    t.float "jaga_fm"
+    t.float "satsumaimo_vw"
+    t.float "satsumaimo_fm"
+    t.float "ninniku_vw"
+    t.float "ninniku_fm"
+    t.float "shitake_vw"
+    t.float "shitake_fm"
+    t.float "kuri_vw"
+    t.float "kuri_fm"
+    t.float "daizu_vw"
+    t.float "daizu_fm"
+    t.float "mikan_vw"
+    t.float "mikan_fm"
+    t.float "kiui_vw"
+    t.float "kiui_fm"
+    t.float "orange_vw"
+    t.float "orange_fm"
+    t.float "ringo_vw"
+    t.float "ringo_fm"
+    t.float "budou_vw"
+    t.float "budou_fm"
+    t.float "nashi_vw"
+    t.float "nashi_fm"
+    t.float "momo_vw"
+    t.float "momo_fm"
+    t.float "sumomo_vw"
+    t.float "sumomo_fm"
+    t.float "pain_vw"
+    t.float "pain_fm"
+    t.float "sakura_vw"
+    t.float "sakura_fm"
+    t.float "kaki_vw"
+    t.float "kaki_fm"
+    t.float "ichigo_vw"
+    t.float "ichigo_fm"
+    t.float "suika_vw"
+    t.float "suika_fm"
+    t.float "meron_vw"
+    t.float "meron_fm"
+    t.float "touhu_vw"
+    t.float "touhu_fm"
+    t.float "konnyaku_vw"
+    t.float "konnyaku_fm"
+    t.float "bata_vw"
+    t.float "bata_fm"
+    t.float "yoogle_vw"
+    t.float "yoogle_fm"
+    t.float "cheese_vw"
+    t.float "cheese_fm"
+    t.float "gyunyu_vw"
+    t.float "gyunyu_fm"
+    t.float "v_vw"
+    t.float "v_fm"
+    t.float "sio_vw"
+    t.float "sio_fm"
+    t.float "syoyu_vw"
+    t.float "syoyu_fm"
+    t.float "sake_vw"
+    t.float "sake_fm"
+    t.float "miso_vw"
+    t.float "miso_fm"
+    t.float "kecha_vw"
+    t.float "kecha_fm"
+    t.float "kosyo_vw"
+    t.float "kosyo_fm"
+    t.float "kary_vw"
+    t.float "kary_fm"
+    t.float "komugi_vw"
+    t.float "komugi_fm"
+    t.float "satou_vw"
+    t.float "satou_fm"
+    t.float "su_vw"
+    t.float "su_fm"
+    t.float "syokubutsuyu_vw"
+    t.float "syokubutsuyu_fm"
+    t.float "oliveoil_vw"
+    t.float "oliveoil_fm"
+    t.float "tya_vw"
+    t.float "tya_fm"
+    t.float "mugitya_vw"
+    t.float "mugitya_fm"
+    t.float "tea_vw"
+    t.float "tea_fm"
+    t.float "coffee_vw"
+    t.float "coffee_fm"
+    t.float "orangejuce_vw"
+    t.float "orangejuce_fm"
+    t.float "lemonjuce_vw"
+    t.float "lemonjuce_fm"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
@@ -231,10 +231,6 @@ ActiveRecord::Schema.define(version: 20171012065802) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
-    t.string "avatar_file_name"
-    t.string "avatar_content_type"
-    t.integer "avatar_file_size"
-    t.datetime "avatar_updated_at"
     t.integer "setai"
     t.index ["email"], name: "index_users_on_email", unique: true
   end

@@ -22,3 +22,11 @@
 #Ignore uploaded test images.
 /public/uploads
 /config/initializers/carrier_wave.rb
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+.DS_Store
