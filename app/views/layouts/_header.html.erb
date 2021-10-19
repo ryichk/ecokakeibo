@@ -12,7 +12,6 @@
             <ul class="user__info">
               <li><%= link_to "ログアウト", logout_path, method: "delete", class: "btn" %></li>
               <li><%= link_to "設定の変更", edit_user_path(current_user), class: "btn" %></li>
-              
               <li><%= link_to "利用規約", sessions_path, class: "btn" %></li>
               <li><% if current_user.admin? && !current_user?(user) %>
                 | <%= link_to 'アカウント削除', user, method: :delete,
