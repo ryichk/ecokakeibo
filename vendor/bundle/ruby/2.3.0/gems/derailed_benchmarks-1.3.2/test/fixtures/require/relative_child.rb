@@ -1,2 +1,0 @@
-class RelativeChild
-end
