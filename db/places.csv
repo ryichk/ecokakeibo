@@ -1,5 +1,0 @@
-id,"name","address",latitude,longitude,"created_at","updated_at",user_id,"review","photos",like_places_count
-1,"VAULTCOFFEE(秋葉原・末広町カフェ・喫茶店)","日本、〒101-0021 東京都千代田区 外神田４丁目5番1号",35.7015,139.772,"2018-05-24 18:13:43","2018-05-24 18:13:43",NULL,NULL,"https://lh3.googleusercontent.com/p/AF1QipO1Hi4P412jF5wprHRgNw7Q2ldjtGrtUxzKkBfK=s1600-w800",-2
-2,"カフェ・ベローチェ 秋葉原駅前広場店","日本、〒101-0023 東京都千代田区神田松永町１０４ TSKﾋﾞﾙ",35.6993,139.775,"2018-05-24 18:14:17","2018-05-24 18:14:17",NULL,NULL,"https://lh3.googleusercontent.com/p/AF1QipPQzzlcS2eXRHAFw9xX8EUl0L-cZ_pePo_yNXlf=s1600-w800",1
-3,"エクセルシオールカフェ 秋葉原ダイビル店","日本、〒101-0021 東京都 千代田区外神田１丁目１８−３ 秋葉原ダイビル",35.6995,139.772,"2018-05-24 18:14:56","2018-05-24 18:14:56",NULL,NULL,"https://lh3.googleusercontent.com/p/AF1QipN-lr1NIk6HRAs_5M5cfRm2loJfUn1kBzAolY6X=s1600-w800",-2
-4,"キーズカフェ (KEY’S CAFE) 秋葉原店","日本、〒101-0025 東京都千代田区神田佐久間町１−１９−1F 山中ビルディング",35.6979,139.775,"2018-05-26 04:17:00","2018-05-26 04:17:00",NULL,NULL,"https://lh3.googleusercontent.com/p/AF1QipP3BWbjTciJRTeH5tKSRKuhat4M2PNDxDIy8lEB=s1600-w800",NULL
