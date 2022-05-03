@@ -16,15 +16,25 @@ services:
     container_name: ecokakeibo-api
     tty: true
     stdin_open: true
-    build: .
+    build: ./api
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/ecokakeibo
+      - ./api:/ecokakeibo
       - bundle:/usr/local/bundle
     ports:
       - 3000:3000
     depends_on:
       - db
+  front:
+    build: ./front
+    environment:
+      PORT: 8000
+    volumes:
+      - ./front:/front
+    command: yarn start
+    ports:
+      - 8000:8000
+    container_name: ecokakeibo-front
 
 volumes:
   mysql-data:
