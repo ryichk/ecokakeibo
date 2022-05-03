@@ -3,10 +3,12 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  plugins: ['@typescript-eslint'],
   extends: [
     'plugin:react/recommended',
     'airbnb',
     'plugin:@typescript-eslint/recommended',
+    'prettier',
     'plugin:jest/recommended',
     'plugin:prettier/recommended',
   ],
@@ -16,12 +18,18 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
   rules: {
-    'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error'],
+    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-explicit-any': 'error',
+    'import/order': [
+      'error',
+      {
+        alphabetize: {
+          order: 'asc',
+        },
+      },
+    ],
     'react/jsx-filename-extension': [
       'warn',
       {
