@@ -1,7 +1,0 @@
-<h1>環境家計簿</h1>
-
-<p>こんにちは、<%= @user.name %>さん</p>
-
-<p>ようこそ環境家計簿へ！下のリンクを押して、あなたのアカウントを有効化してください。</p>
-
-<%= link_to "承認", edit_account_activation_url(@user.activation_token, email: @user.email) %>
